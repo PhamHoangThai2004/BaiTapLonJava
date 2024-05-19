@@ -7,9 +7,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Tinh implements Serializable{
-
-    
+public class Tinh implements Serializable{ 
     private int maTinh;
     private String tenTinh;
 

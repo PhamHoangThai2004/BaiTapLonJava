@@ -45,12 +45,9 @@ public class PhongBan implements Serializable{
         this.ngayTL = ngayTL;
     }
     
-    
-
     @Override
     public String toString() {
         return "PhongBan{" + "maPB=" + maPB + ", tenPB=" + tenPB + ", ngayTL=" + ngayTL.toString() + '}';
     }
-    
     
 }

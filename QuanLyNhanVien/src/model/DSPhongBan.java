@@ -14,7 +14,7 @@ public class DSPhongBan {
 
     public DSPhongBan(ArrayList<PhongBan> dsPB) {
         this.dsPB = dsPB;
-        
+       
     }
 
     public DSPhongBan() {
@@ -44,8 +44,7 @@ public class DSPhongBan {
                 PB.setTenPB(pb.getTenPB());
                 PB.setNgayTL(pb.getNgayTL());
             }
-        }
-        
+        }       
     }
     
     public PhongBan TimPBBySTT(int sttPB) {

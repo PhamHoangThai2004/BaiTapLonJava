@@ -21,7 +21,8 @@ public class NhanVien implements Serializable{
     public NhanVien() {
     }
 
-    public NhanVien(int maNV, String tenNV, Date ngaySinh, boolean gioiTinh, Tinh diaChi, PhongBan phongBan, String chucVu, Date ngayVaoLam, double luongCB) {
+    public NhanVien(int maNV, String tenNV, Date ngaySinh, boolean gioiTinh,
+            Tinh diaChi, PhongBan phongBan, String chucVu, Date ngayVaoLam, double luongCB) {
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.ngaySinh = ngaySinh;

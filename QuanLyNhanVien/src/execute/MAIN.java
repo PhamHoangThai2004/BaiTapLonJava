@@ -5,16 +5,18 @@
 package execute;
 
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import view.QLNVView;
 
 public class MAIN {
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            new QLNVView();
+            QLNVView qlnvView = new QLNVView();
         }
-        catch(Exception e) {
-            e.printStackTrace();
+        catch(ClassNotFoundException | IllegalAccessException | InstantiationException 
+                | UnsupportedLookAndFeelException e) {
+            System.err.println("Lỗi hiển thị frame - dòng 19");
         }
     }
 }

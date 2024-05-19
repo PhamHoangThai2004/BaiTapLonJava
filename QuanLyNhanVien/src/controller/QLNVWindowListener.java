@@ -11,7 +11,7 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import view.QLNVView;
 
 public class QLNVWindowListener implements WindowListener{
-    private QLNVView view;
+    private final QLNVView view;
 
     public QLNVWindowListener(QLNVView view) {
         this.view = view;
@@ -26,14 +26,15 @@ public class QLNVWindowListener implements WindowListener{
         int choose = JOptionPane.showConfirmDialog(this.view, 
                 "Bạn có muốn lưu files không?", "Save File",
                 JOptionPane.YES_NO_CANCEL_OPTION);
-        if(choose == JOptionPane.YES_OPTION) {
-            this.view.saveFile();
-        }
-        else if(choose == JOptionPane.NO_OPTION) {
-            System.exit(0);
-        }
-        else {
-            this.view.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        switch (choose) {
+            case JOptionPane.YES_OPTION:
+                this.view.saveFile();
+                break;
+            case JOptionPane.NO_OPTION:
+                System.exit(0);
+            default:
+                this.view.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                break;
         }
     }
 

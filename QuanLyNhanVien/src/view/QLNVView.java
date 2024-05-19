@@ -6,12 +6,15 @@ package view;
 
 import controller.*;
 import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -59,7 +62,7 @@ public class QLNVView extends javax.swing.JFrame {
         DisplayPB(dsPhongBan.getDsPB());
     }
     
-    public void setProperty() {
+    private void setProperty() {
         ArrayList<Tinh> listTinh = Tinh.getDSTinh();
         for (Tinh t : listTinh) {
             comboBox_Address.addItem(t.getTenTinh());
@@ -68,13 +71,17 @@ public class QLNVView extends javax.swing.JFrame {
 
         this.EditComboBox();
         
-        String[] listPosition = {"Giám Đốc","Thư kí", "Trưởng Phòng", "Phó Phòng",
+        String[] listPosition = {"Giám Đốc","Thư ký", "Trưởng Phòng", "Phó Phòng",
                                     "Nhân Viên", "Thực Tập", "Khác..."};
         for (String vt : listPosition) {
             comboBox_Position.addItem(vt);
         }
         this.comboBox_Position.setSelectedIndex(-1);
         
+        // set icon frame
+        URL urlIonNotePad = QLNVView.class.getResource("/icon/QLNV24px.png");
+        Image img = Toolkit.getDefaultToolkit().createImage(urlIonNotePad);
+        this.setIconImage(img);
         
         buttonGroup = new ButtonGroup();
         buttonGroup.add(radioButton_Male);
@@ -87,9 +94,11 @@ public class QLNVView extends javax.swing.JFrame {
         popupMenu.add(menuItem_Update);      
         this.add(popupMenu);
         
+        // set mouse action
         QLNVMouseListen molis = new QLNVMouseListen(this);
         this.table.addMouseListener(molis);
         
+        // set action Listen
         QLNVController act = new QLNVController(this);
         menuItem_NewFile.addActionListener(act);
         menuItem_OpenFile.addActionListener(act);
@@ -103,7 +112,7 @@ public class QLNVView extends javax.swing.JFrame {
         menuItem_SearchDepartmentByName.addActionListener(act);
         menuItem_ShowSaff.addActionListener(act);
         menuItem_ShowDepartment.addActionListener(act);
-        menuItem_Help.addActionListener(act);
+        menuItem_About.addActionListener(act);
         button_AddBP.addActionListener(act);
         button_AddSaff.addActionListener(act);
         button_Save.addActionListener(act);
@@ -113,8 +122,11 @@ public class QLNVView extends javax.swing.JFrame {
         
         this.table.setRowHeight(25);
         
+        // set action Window
         QLNVWindowListener Wl = new QLNVWindowListener(this);
-//        this.addWindowListener(Wl);
+        this.addWindowListener(Wl);
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -179,8 +191,8 @@ public class QLNVView extends javax.swing.JFrame {
         menu_View = new javax.swing.JMenu();
         menuItem_ShowSaff = new javax.swing.JMenuItem();
         menuItem_ShowDepartment = new javax.swing.JMenuItem();
-        menu_About = new javax.swing.JMenu();
-        menuItem_Help = new javax.swing.JMenuItem();
+        menu_Help = new javax.swing.JMenu();
+        menuItem_About = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
 
@@ -452,28 +464,33 @@ public class QLNVView extends javax.swing.JFrame {
 
         menuItem_NewFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_NewFile.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_NewFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/newfile16px.png"))); // NOI18N
         menuItem_NewFile.setText("New File");
         menu_File.add(menuItem_NewFile);
 
         menuItem_OpenFile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_OpenFile.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_OpenFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/openfile16px.png"))); // NOI18N
         menuItem_OpenFile.setText("Open File");
         menu_File.add(menuItem_OpenFile);
         menu_File.add(separator_Menu1);
 
         menuItem_Save.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_Save.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/savefile16px.png"))); // NOI18N
         menuItem_Save.setText("Save");
         menu_File.add(menuItem_Save);
 
         menuItem_Close.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_Close.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_Close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/closefile16px.png"))); // NOI18N
         menuItem_Close.setText("Close");
         menu_File.add(menuItem_Close);
         menu_File.add(separator_Menu2);
 
         menuItem_Exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_Exit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/exit16px.png"))); // NOI18N
         menuItem_Exit.setText("Exit");
         menu_File.add(menuItem_Exit);
 
@@ -518,25 +535,29 @@ public class QLNVView extends javax.swing.JFrame {
         menu_View.setDoubleBuffered(true);
         menu_View.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
+        menuItem_ShowSaff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_ShowSaff.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_ShowSaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showsaff16px.png"))); // NOI18N
         menuItem_ShowSaff.setText("Show Saff");
         menu_View.add(menuItem_ShowSaff);
 
+        menuItem_ShowDepartment.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_ShowDepartment.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_ShowDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/department16px.png"))); // NOI18N
         menuItem_ShowDepartment.setText("Show Department");
         menuItem_ShowDepartment.setEnabled(false);
         menu_View.add(menuItem_ShowDepartment);
 
         menuBar.add(menu_View);
 
-        menu_About.setText("About");
-        menu_About.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menu_Help.setText("Help");
+        menu_Help.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        menuItem_Help.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        menuItem_Help.setText("Help");
-        menu_About.add(menuItem_Help);
+        menuItem_About.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        menuItem_About.setText("About");
+        menu_Help.add(menuItem_About);
 
-        menuBar.add(menu_About);
+        menuBar.add(menu_Help);
 
         setJMenuBar(menuBar);
 
@@ -600,9 +621,9 @@ public class QLNVView extends javax.swing.JFrame {
     private javax.swing.JLabel label_Sex;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuFindStaff;
+    public javax.swing.JMenuItem menuItem_About;
     public javax.swing.JMenuItem menuItem_Close;
     public javax.swing.JMenuItem menuItem_Exit;
-    public javax.swing.JMenuItem menuItem_Help;
     public javax.swing.JMenuItem menuItem_NewFile;
     public javax.swing.JMenuItem menuItem_OpenFile;
     public javax.swing.JMenuItem menuItem_Save;
@@ -614,9 +635,9 @@ public class QLNVView extends javax.swing.JFrame {
     public javax.swing.JMenuItem menuItem_ShowDepartment;
     public javax.swing.JMenuItem menuItem_ShowSaff;
     private javax.swing.JMenu menuSearch;
-    private javax.swing.JMenu menu_About;
     private javax.swing.JMenu menu_File;
     private javax.swing.JMenu menu_Finđepảtment;
+    private javax.swing.JMenu menu_Help;
     private javax.swing.JMenu menu_View;
     private javax.swing.JPanel panel_Button;
     private javax.swing.JPanel panel_Infor;
@@ -638,22 +659,19 @@ public class QLNVView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void EditList(ArrayList<NhanVien> list) {
-        int j = 0;
         for (NhanVien NV : list) {
-            j++;
-            int i = 0;
+            boolean b = false;
             for (PhongBan PB : this.dsPhongBan.getDsPB()) {
                 if(NV.getPhongBan().getTenPB().equals(PB.getTenPB())) {
-                    i = 1;
+                    b = true;
                     break;
                 }
             }
-            if(i == 0)  {
+            if(!b)  {
                 Date date = new Date(1, 1, 1);
                 PhongBan phongBan = new PhongBan("Not", "Không có PB", date);
                 NV.setPhongBan(phongBan);
             }
-            System.out.println("Số j = " + j);
         }
     }
     
@@ -685,7 +703,7 @@ public class QLNVView extends javax.swing.JFrame {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Không tìm thấy file Phòng Ban - dòng 685");
         }
         this.dsPhongBan.setDsPB(phongBan);
     }
@@ -699,7 +717,7 @@ public class QLNVView extends javax.swing.JFrame {
             }
             oos.close();
         } catch (IOException e) {
-            e.printStackTrace();
+             System.err.println("Không tìm thấy file Phong Ban - dòng 699");
         }
     }
     
@@ -751,11 +769,11 @@ public class QLNVView extends javax.swing.JFrame {
                             }
             this.trangThai = true;
         } catch (Exception e) {
-            System.err.println("Danh sách null");
+            System.err.println("Danh sách nhân viên null - dòng 751");
         }
     }
     
-    public void DisplayPB(ArrayList<PhongBan> DSPB) {
+    public final void DisplayPB(ArrayList<PhongBan> DSPB) {
         DefaultTableModel modelTable = new DefaultTableModel();
         table.setModel(modelTable);
         modelTable.addColumn("Mã phòng ban");
@@ -772,7 +790,7 @@ public class QLNVView extends javax.swing.JFrame {
                             }
             this.trangThai = false;
         } catch (Exception e) {
-            System.err.println("Danh sách null");
+            System.err.println("Danh sách phòng ban null - dòng 772");
         }
     }
     
@@ -785,7 +803,7 @@ public class QLNVView extends javax.swing.JFrame {
     }
 
     public void showHelp() {
-        JOptionPane.showMessageDialog(this, "Phần mềm quản lý nhân viên 1.0.0");
+        JOptionPane.showMessageDialog(this, "Phần mềm quản lý nhân viên 2.0.0");
     }
 
     public void setEnable(boolean b1, boolean b2) {
@@ -859,8 +877,10 @@ public class QLNVView extends javax.swing.JFrame {
     public void xoaNV() {
         DefaultTableModel modelTable = (DefaultTableModel) table.getModel();
         int row = table.getSelectedRow();
+        
         int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa!",
                 "Confirm", JOptionPane.ERROR_MESSAGE);
+        
         if(luaChon == JOptionPane.YES_OPTION) {
             this.MNV = Integer.parseInt(modelTable.getValueAt(row, 0)+"");
             for(int i = 0; i < this.model.getDsNV().size(); i++) {
@@ -876,8 +896,10 @@ public class QLNVView extends javax.swing.JFrame {
     public void xoaPB() {
         DefaultTableModel modelTable = (DefaultTableModel) table.getModel();
         int row = table.getSelectedRow();
+        
         int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa!",
                 "Confirm", JOptionPane.ERROR_MESSAGE);
+        
         if(luaChon == JOptionPane.YES_OPTION) {
             this.MPB = modelTable.getValueAt(row, 0)+"";
             for(int i = 0; i < this.dsPhongBan.getDsPB().size(); i++) {
@@ -1028,7 +1050,7 @@ public class QLNVView extends javax.swing.JFrame {
                     this.menuItem_ShowDepartment.setEnabled(true); 
                 }
             } catch (HeadlessException | IOException e) {
-                e.printStackTrace();
+                System.err.println("Lỗi tạo file - dòng 1032");
             }
         }
     }
@@ -1036,6 +1058,7 @@ public class QLNVView extends javax.swing.JFrame {
     public void openFile() {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Open File");
+        
         int choose = fileChooser.showOpenDialog(this);
         if(choose == JFileChooser.APPROVE_OPTION) {
             File fileToOpen = fileChooser.getSelectedFile();
@@ -1047,7 +1070,6 @@ public class QLNVView extends javax.swing.JFrame {
     }
 
     private void ReadFileNV(String tenFile) {
-        System.out.println("Có tìm thấy file nv");
         this.label_FileName.setText(tenFile);
         ArrayList<NhanVien> nhanVien = new ArrayList<>();
         this.setTenFile(tenFile);
@@ -1067,7 +1089,7 @@ public class QLNVView extends javax.swing.JFrame {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Lỗi đọc file - dòng 1071");
         }
         this.EditList(nhanVien);
         this.model.setDsNV(nhanVien);       
@@ -1098,7 +1120,7 @@ public class QLNVView extends javax.swing.JFrame {
             }
             oos.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Lỗi ghi file - dòng 1102");
         }
     }
 
