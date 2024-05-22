@@ -860,18 +860,28 @@ public class QLNVView extends javax.swing.JFrame {
         }    
     }
 
-    public void themNV(NhanVien NV) {
+    public boolean themNV(NhanVien NV) {
+        for (NhanVien nv : this.model.getDsNV()) {
+            if(NV.getMaNV() == nv.getMaNV())  return false;
+        }
         model.ThemNV(NV);
         model.In();
+        this.xoaForm(1);
         DisplayNV(this.model.getDsNV());
+        return true;
     }
 
-    public void themPB(PhongBan PB) {
+    public boolean themPB(PhongBan PB) {
+        for (PhongBan pb : this.dsPhongBan.getDsPB()) {
+            if(PB.getMaPB().equals(pb.getMaPB()))  return false;
+        }
         dsPhongBan.ThemPB(PB);
         dsPhongBan.In();
         this.EditComboBox();
         WriteFilePB();
+        this.xoaForm(-1);
         DisplayPB(this.dsPhongBan.getDsPB());
+        return true;
     }
 
     public void xoaNV() {
@@ -955,6 +965,7 @@ public class QLNVView extends javax.swing.JFrame {
         this.textField_Salary.setText(formattedNumber.replace(',', '.'));
         
         this.MNV = maNV;
+        System.out.println(this.MNV);
     }
 
     public void hienThiPB() {
@@ -974,19 +985,33 @@ public class QLNVView extends javax.swing.JFrame {
         this.MPB = maPB;
     }
 
-    public void capNhatNV(NhanVien nv) {
+    public boolean capNhatNV(NhanVien nv) {
+        for (NhanVien NV : this.model.getDsNV()) {
+            if(nv.getMaNV() == NV.getMaNV() && nv.getMaNV() != this.MNV )   return false;
+        }
         this.model.CapNhatNV(this.MNV, nv);
         DisplayNV(this.model.getDsNV());
         this.xoaForm(1);
+        this.menuItem_ShowDepartment.setEnabled(true);
+        this.menuItem_ShowSaff.setEnabled(false);
+        this.setEnable(false, false);
+        return true;
     }
 
-    public void capNhatPB(PhongBan pb) {
+    public boolean capNhatPB(PhongBan pb) {
+        for (PhongBan PB : this.dsPhongBan.getDsPB()) {
+            if(pb.getMaPB().equals(PB.getMaPB()) && !pb.getMaPB().equals(this.MPB))  return false;
+        }
         this.dsPhongBan.CapNhatPB(this.MPB, pb);
         DisplayPB(this.dsPhongBan.getDsPB());
         this.xoaForm(-1);     
         this.EditList(this.model.getDsNV());
         WriteFilePB();
         this.EditComboBox();
+        this.menuItem_ShowDepartment.setEnabled(false);
+        this.menuItem_ShowSaff.setEnabled(true);
+        this.setEnable(false, false);
+        return true;
     }
 
     public void timNVByID(int maNV) {              

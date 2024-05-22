@@ -101,32 +101,40 @@ public class QLNVController implements ActionListener{
                 try {
                     switch (this.luaChon) {
                         case "Thêm nhân viên" -> {
-                            this.view.themNV(this.selectNV());
-                            this.view.xoaForm(1);
+                            boolean thnv = this.view.themNV(this.selectNV());
+                            if(!thnv)  {
+                                JOptionPane.showMessageDialog(view, "Mã nhân viên đã tồn tại",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                         case "Thêm phòng ban" -> {
-                            this.view.themPB(this.selectPB());
-                            this.view.xoaForm(-1);
+                            boolean thpb = this.view.themPB(this.selectPB());
+                            if(!thpb)  {
+                                JOptionPane.showMessageDialog(view, "Mã phòng ban đã tồn tại",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                         case "Chỉnh sửa" -> {
                             if(tmpStatus) {
-                                this.view.capNhatNV(this.selectNV());
-                                this.view.menuItem_ShowDepartment.setEnabled(true);
-                                this.view.menuItem_ShowSaff.setEnabled(false);
-                                this.view.setEnable(false, false);
+                                boolean csnv = this.view.capNhatNV(this.selectNV());
+                                if(!csnv)  {
+                                JOptionPane.showMessageDialog(view, "Mã nhân viên đã tồn tại",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
+                                }
                             }
                             else {
-                                this.view.capNhatPB(this.selectPB());
-                                this.view.menuItem_ShowDepartment.setEnabled(false);
-                                this.view.menuItem_ShowSaff.setEnabled(true);
-                                this.view.setEnable(false, false);
+                                boolean cspb = this.view.capNhatPB(this.selectPB());
+                                if(!cspb)  {
+                                JOptionPane.showMessageDialog(view, "Mã phòng ban đã tồn tại",
+                                        "Error", JOptionPane.ERROR_MESSAGE);
+                                }                             
                             }
                         }
                         default -> {
                         }
                     }
                 } catch (NumberFormatException e2) {
-                    System.out.println("Lỗi lấy thông tin - dòng 143");
+                    System.out.println("Lỗi lấy thông tin - dòng 138");
                 }
             }
             case "Hủy bỏ" -> {
