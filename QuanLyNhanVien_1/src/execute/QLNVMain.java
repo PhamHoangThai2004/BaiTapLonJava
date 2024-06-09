@@ -1,17 +1,31 @@
 package execute;
 
+import controller.MainListen;
 import java.awt.BorderLayout;
-import view.QLNV_Admin;
+import java.awt.Component;
+import view.*;
 
 public class QLNVMain extends javax.swing.JFrame {
-
+    private Component component;
     
     public QLNVMain() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setProperty();
+        this.component = new QLNV_Admin();
         this.setLayout(new BorderLayout());
-        this.add(new QLNV_Admin(), BorderLayout.CENTER);
+        this.add(this.component, BorderLayout.CENTER);
         this.setVisible(true);
+    }
+    
+    private void setProperty() {
+        MainListen mainListen = new MainListen(this);
+        menuItem_CreateAccount.addActionListener(mainListen);
+        menuItem_ShowStaff.addActionListener(mainListen);
+        menuItem_ShowDepartment.addActionListener(mainListen);
+        menuItem_ShowAccount.addActionListener(mainListen);
+        menuItem_About.addActionListener(mainListen);
+        menuItem_Exit.addActionListener(mainListen);
     }
     
     @SuppressWarnings("unchecked")
@@ -26,6 +40,8 @@ public class QLNVMain extends javax.swing.JFrame {
         menuItem_ShowDepartment = new javax.swing.JMenuItem();
         menuItem_ShowAccount = new javax.swing.JMenuItem();
         menu_Help = new javax.swing.JMenu();
+        menuItem_About = new javax.swing.JMenuItem();
+        menuItem_Exit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +66,13 @@ public class QLNVMain extends javax.swing.JFrame {
         menuBar.add(menuView);
 
         menu_Help.setText("Help");
+
+        menuItem_About.setText("About");
+        menu_Help.add(menuItem_About);
+
+        menuItem_Exit.setText("Exit");
+        menu_Help.add(menuItem_Exit);
+
         menuBar.add(menu_Help);
 
         setJMenuBar(menuBar);
@@ -71,7 +94,9 @@ public class QLNVMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuItem_About;
     private javax.swing.JMenuItem menuItem_CreateAccount;
+    private javax.swing.JMenuItem menuItem_Exit;
     private javax.swing.JMenuItem menuItem_ShowAccount;
     private javax.swing.JMenuItem menuItem_ShowDepartment;
     private javax.swing.JMenuItem menuItem_ShowStaff;
@@ -79,4 +104,14 @@ public class QLNVMain extends javax.swing.JFrame {
     private javax.swing.JMenu menu_Edit;
     private javax.swing.JMenu menu_Help;
     // End of variables declaration//GEN-END:variables
+
+    public void editPanel(Component component) {
+        if(component.getClass() != this.component.getClass()) {
+            this.remove(this.component);
+            this.add(component);
+            this.component = component;
+            this.revalidate();
+            this.repaint();
+        }
+    }
 }

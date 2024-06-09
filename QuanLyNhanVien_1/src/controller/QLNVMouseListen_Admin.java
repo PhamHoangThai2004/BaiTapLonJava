@@ -7,14 +7,14 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JTable;
-import view.QLNVView;
+import view.*;
 
 
 
-public class QLNVMouseListen implements MouseListener{
-    private final QLNVView view;
+public class QLNVMouseListen_Admin implements MouseListener{
+    private final QLNV_Admin view;
 
-    public QLNVMouseListen(QLNVView view) {
+    public QLNVMouseListen_Admin(QLNV_Admin view) {
         this.view = view;
     } 
     
@@ -29,14 +29,14 @@ public class QLNVMouseListen implements MouseListener{
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        int r = this.view.table.rowAtPoint(e.getPoint());
-        if (r >= 0 && r < this.view.table.getRowCount()) {
-            this.view.table.setRowSelectionInterval(r, r);
+        int r = this.view.table_Staff.rowAtPoint(e.getPoint());
+        if (r >= 0 && r < this.view.table_Staff.getRowCount()) {
+            this.view.table_Staff.setRowSelectionInterval(r, r);
         } 
         else {
-            this.view.table.clearSelection();
+            this.view.table_Staff.clearSelection();
         }
-        int rowindex = this.view.table.getSelectedRow();
+        int rowindex = this.view.table_Staff.getSelectedRow();
         if (rowindex < 0)
             return;
         if (e.isPopupTrigger() && e.getComponent() instanceof JTable) {

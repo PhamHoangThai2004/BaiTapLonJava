@@ -6,14 +6,14 @@ package model;
 
 import java.util.ArrayList;
 
-public class QLNVModel {
+public class DSNhanVien {
     private ArrayList<NhanVien> dsNV;
 
-    public QLNVModel() {
+    public DSNhanVien() {
         dsNV = new ArrayList<>();   
     }
 
-    public QLNVModel(ArrayList<NhanVien> dsNV) {
+    public DSNhanVien(ArrayList<NhanVien> dsNV) {
         this.dsNV = dsNV;
     }
 
