@@ -73,6 +73,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
 //        dsTaiKhoan.ThemTK(tk4);
         this.ReadFilePB();
         this.ReadFileTK();
+        this.checkAuthority();
         for (PhongBan pb : this.dsPhongBan.getDsPB()) {
             comboBox_Authority.addItem(pb.getTenPB());
         }
@@ -307,6 +308,21 @@ public class QLTK_Admin extends javax.swing.JPanel {
         textField_Pasword.setText("");
         comboBox_Authority.setSelectedIndex(-1);
         textField_CreateDay.setText("");
+    }
+    
+    private void checkAuthority() {
+        for (TaiKhoan TK : this.dsTaiKhoan.getDsTK()) {
+            if(TK.getAuthority().equals("Không Có Quyền") 
+                    || TK.getAuthority().equals("ADMIN")) continue;
+            boolean check = false;
+            for (PhongBan PB : this.dsPhongBan.getDsPB()) {              
+                if(TK.getAuthority().equals(PB.getTenPB())) {
+                    check = true;
+                    break;
+                }
+            }
+            if(!check) TK.setAuthority("Không Có Quyền");
+        }
     }
     
     private void DisplayTK(ArrayList<TaiKhoan> DSTK) {

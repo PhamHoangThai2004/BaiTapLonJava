@@ -583,7 +583,6 @@ public class QLNV_Admin extends javax.swing.JPanel {
         this.textField_Salary.setText(formattedNumber.replace(',', '.'));
         
         this.MNV = maNV;
-//        System.out.println(this.MNV);
     }
 
     private double HeSoLuong(String position, int year) {
