@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -55,22 +54,6 @@ public class QLTK_Admin extends javax.swing.JPanel {
         button_Search.addActionListener(lis);
         button_SearchCancel.addActionListener(lis);
         
-//        Date date = new Date("12/1/2021");
-//        
-//        PhongBan pb1 = new PhongBan("PB01", "Human Resource", date);
-//        PhongBan pb2 = new PhongBan("PB02", "CNTT", date);
-//        PhongBan pb3 = new PhongBan("PB03", "Sale", date);        
-//        dsPhongBan.ThemPB(pb1);
-//        dsPhongBan.ThemPB(pb2);
-//        dsPhongBan.ThemPB(pb3);
-//        TaiKhoan tk1 = new TaiKhoan("abc", "123", pb1.getTenPB(), date);
-//        TaiKhoan tk2 = new TaiKhoan("def", "456", pb2.getTenPB(), date);
-//        TaiKhoan tk3 = new TaiKhoan("ghi", "789", pb3.getTenPB(), date);
-//        TaiKhoan tk4 = new TaiKhoan("kln", "054", "ADMIN", date);
-//        dsTaiKhoan.ThemTK(tk1);
-//        dsTaiKhoan.ThemTK(tk2);
-//        dsTaiKhoan.ThemTK(tk3);
-//        dsTaiKhoan.ThemTK(tk4);
         this.ReadFilePB();
         this.ReadFileTK();
         this.checkAuthority();
@@ -78,7 +61,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
             comboBox_Authority.addItem(pb.getTenPB());
         }
         comboBox_Authority.addItem("ADMIN");
-        comboBox_Authority.addItem("Không Có Quyền");;
+        comboBox_Authority.addItem("Không Có Quyền");
         comboBox_Authority.setSelectedIndex(-1);
         
         this.DisplayTK(this.dsTaiKhoan.getDsTK());
@@ -343,7 +326,6 @@ public class QLTK_Admin extends javax.swing.JPanel {
                                                 "/"+(TK.getNgayTao().getYear()+1900)});
                             }
         } catch (Exception e) {
-            System.err.println("Danh sách phòng ban null - dòng 772");
         }
     }
 
@@ -429,7 +411,6 @@ public class QLTK_Admin extends javax.swing.JPanel {
                         modelTable.removeRow(i);
                     }
                     catch(Exception e) {
-                        e.printStackTrace();
                     }
                     break;
                 }
@@ -461,7 +442,6 @@ public class QLTK_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Không tìm thấy file Phòng Ban - dòng 685");
         }
         this.dsTaiKhoan.setDsTK(taiKhoan);
     }
@@ -475,7 +455,6 @@ public class QLTK_Admin extends javax.swing.JPanel {
             }
             oos.close();
         } catch (IOException e) {
-             System.err.println("Không tìm thấy file Tài Khoản - dòng 458");
         }
     }
     
@@ -498,7 +477,6 @@ public class QLTK_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Không tìm thấy file Phòng Ban - dòng 685");
         }
         this.dsPhongBan.setDsPB(phongBan);
     }

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.*;
@@ -49,12 +48,7 @@ public class QLPB_Admin extends javax.swing.JPanel {
         button_Cancel.addActionListener(lis);
         menuItem_Delete.addActionListener(lis);
         menuItem_Detaild.addActionListener(lis);
-        
-//        Date date = new Date("12/1/2021");
-//        PhongBan pb1 = new PhongBan("PB01", "Admin", date);
-//        PhongBan pb2 = new PhongBan("PB02", "Sale", date);
-//        dsPhongBan.ThemPB(pb1);
-//        dsPhongBan.ThemPB(pb2);
+             
         this.ReadFilePB();
         this.ReadFileNV();
         DisplayPB(this.dsPhongBan.getDsPB());

@@ -9,9 +9,9 @@
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItem_CreateAccount">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItem_Logout">
               <Properties>
-                <Property name="text" type="java.lang.String" value="T&#x1ea1;o T&#xe0;i Kho&#x1ea3;n"/>
+                <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Xu&#x1ea5;t"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -20,6 +20,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_ShowStaff">
               <Properties>

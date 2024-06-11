@@ -8,7 +8,7 @@ import model.TaiKhoan;
 import view.QLTK_Admin;
 
 public class QLTKListen_Admin implements ActionListener{
-    private QLTK_Admin view;
+    private final QLTK_Admin view;
     private String status;
 
     public QLTKListen_Admin(QLTK_Admin view) {
@@ -19,48 +19,42 @@ public class QLTKListen_Admin implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-//        JOptionPane.showMessageDialog(view, "Bạn vừa nhấn vào " + s);
-        if(s.equals("Tạo")) {
-            this.view.setEnable(true);
-            this.status = s;
-        }
-        else if(s.equals("Lưu")) {
-            String tenTK = this.view.textField_UserName.getText();
-            String matKhau = this.view.textField_Pasword.getText();
-            String quyen = this.view.comboBox_Authority.getSelectedItem()+"";
-//            PhongBan quyen = this.view.dsPhongBan.TimPBBySTT(sttQuyen);
-            
-            
-            if(this.status.equals("Tạo")){       
-                Date ngayTao = new Date();
-                TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen  , ngayTao);
-                boolean b = this.view.themTK(TK);
-                if(!b) JOptionPane.showMessageDialog(view, 
-                        "Tài khoản đã tồn tại", "Error", JOptionPane.ERROR_MESSAGE);
+        switch (s) {
+            case "Tạo" -> {
+                this.view.setEnable(true);
+                this.status = s;
             }
-            else if(this.status.equals("Chi Tiết")){
-                Date ngayTao = new Date(this.view.textField_CreateDay.getText());
-                TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen, ngayTao);
-                this.view.capNhatTK(TK);
-                this.status = "";               
+            case "Lưu" -> {
+                String tenTK = this.view.textField_UserName.getText();
+                String matKhau = this.view.textField_Pasword.getText();
+                String quyen = this.view.comboBox_Authority.getSelectedItem()+"";
+                if(this.status.equals("Tạo")){
+                    Date ngayTao = new Date();
+                    TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen  , ngayTao);
+                    boolean b = this.view.themTK(TK);
+                    if(!b) JOptionPane.showMessageDialog(view,
+                            "Tài khoản đã tồn tại", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(this.status.equals("Chi Tiết")){
+                    Date ngayTao = new Date(this.view.textField_CreateDay.getText());
+                    TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen, ngayTao);
+                    this.view.capNhatTK(TK);
+                    this.status = "";
+                }
             }
-        }
-        else if(s.equals("Hủy Bỏ")) {
-            this.view.xoaForm();
-            this.view.setEnable(false);
-        }
-        else if(s.equals("Xóa")) {
-            this.view.xoaTK();
-        }
-        else if(s.equals("Chi Tiết")) {
-            this.view.hienThiChiTiet();
-            this.status = s;
-        }
-        else if(s.equals("Tìm Kiếm")) {
-            this.view.timkiemTK();
-        }
-        else if(s.equals("Hủy")) {
-            this.view.huyTimKiem();
+            case "Hủy Bỏ" -> {
+                this.view.xoaForm();
+                this.view.setEnable(false);
+            }
+            case "Xóa" -> this.view.xoaTK();
+            case "Chi Tiết" -> {
+                this.view.hienThiChiTiet();
+                this.status = s;
+            }
+            case "Tìm Kiếm" -> this.view.timkiemTK();
+            case "Hủy" -> this.view.huyTimKiem();
+            default -> {
+            }
         }
     }
     

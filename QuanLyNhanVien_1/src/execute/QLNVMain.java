@@ -3,24 +3,23 @@ package execute;
 import controller.MainListen;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import view.*;
 
 public class QLNVMain extends javax.swing.JFrame {
-    private Component component;
+    public Component component;
     
-    public QLNVMain() {
+    public QLNVMain(Component component) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setProperty();
-        this.component = new QLNV_Admin();
-        this.setLayout(new BorderLayout());
+        this.component = component;    
+        this.setLayout(new BorderLayout());      
         this.add(this.component, BorderLayout.CENTER);
         this.setVisible(true);
     }
     
     private void setProperty() {
         MainListen mainListen = new MainListen(this);
-        menuItem_CreateAccount.addActionListener(mainListen);
+        menuItem_Logout.addActionListener(mainListen);
         menuItem_ShowStaff.addActionListener(mainListen);
         menuItem_ShowDepartment.addActionListener(mainListen);
         menuItem_ShowAccount.addActionListener(mainListen);
@@ -34,7 +33,7 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menuBar = new javax.swing.JMenuBar();
         menu_Edit = new javax.swing.JMenu();
-        menuItem_CreateAccount = new javax.swing.JMenuItem();
+        menuItem_Logout = new javax.swing.JMenuItem();
         menuView = new javax.swing.JMenu();
         menuItem_ShowStaff = new javax.swing.JMenuItem();
         menuItem_ShowDepartment = new javax.swing.JMenuItem();
@@ -47,8 +46,8 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menu_Edit.setText("Edit");
 
-        menuItem_CreateAccount.setText("Tạo Tài Khoản");
-        menu_Edit.add(menuItem_CreateAccount);
+        menuItem_Logout.setText("Đăng Xuất");
+        menu_Edit.add(menuItem_Logout);
 
         menuBar.add(menu_Edit);
 
@@ -95,12 +94,12 @@ public class QLNVMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItem_About;
-    private javax.swing.JMenuItem menuItem_CreateAccount;
     private javax.swing.JMenuItem menuItem_Exit;
+    private javax.swing.JMenuItem menuItem_Logout;
     private javax.swing.JMenuItem menuItem_ShowAccount;
     private javax.swing.JMenuItem menuItem_ShowDepartment;
     private javax.swing.JMenuItem menuItem_ShowStaff;
-    private javax.swing.JMenu menuView;
+    public javax.swing.JMenu menuView;
     private javax.swing.JMenu menu_Edit;
     private javax.swing.JMenu menu_Help;
     // End of variables declaration//GEN-END:variables
