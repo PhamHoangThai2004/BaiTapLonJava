@@ -48,11 +48,7 @@ public class DSPhongBan {
     }
     
     public PhongBan TimPBBySTT(int sttPB) {
-        if(sttPB >= dsPB.size()) {   
-            Date date = new Date(1, 1, 1);
-            PhongBan phongBan = new PhongBan("Not", "Không có PB", date);
-            return phongBan;
-        }       
+        if(sttPB >= dsPB.size()) return new PhongBan(null, "Không Có Phòng Ban", null);
         return dsPB.get(sttPB);
     }
     
@@ -60,9 +56,7 @@ public class DSPhongBan {
         for (PhongBan pb : dsPB) {
             if(name.equals(pb.getTenPB())) return pb;
         }
-        Date date = new Date(1, 1, 1);
-        PhongBan phongBan = new PhongBan("Not", "Không có PB", date);
-        return phongBan;
+        return new PhongBan(null, "Không Có Phòng Ban", null);
     }
     
     public void In() {
