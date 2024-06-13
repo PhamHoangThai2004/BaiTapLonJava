@@ -77,21 +77,6 @@ public class QLNV_Admin extends javax.swing.JPanel {
         menuItem_Delete.addActionListener(con);
         menuItem_Detaild.addActionListener(con);
         
-//        Date date = new Date("12/1/2021");       
-//        PhongBan pb1 = new PhongBan("PB01", "Human Resource", date);
-//        PhongBan pb2 = new PhongBan("PB02", "CNTT", date);
-//        PhongBan pb3 = new PhongBan("PB03", "Sale", date);        
-//        dsPhongBan.ThemPB(pb1);
-//        dsPhongBan.ThemPB(pb2);
-//        dsPhongBan.ThemPB(pb3);    
-//        NhanVien nv1 = new NhanVien(1, "NV01", date, true,
-//                Tinh.getTinhByID(23), pb1, "Nhân Viên"
-//                        + "", date, 20000);
-//        NhanVien nv2 = new NhanVien(2, "NV02", date, false,
-//                Tinh.getTinhByID(3), pb1, "Thư Ký"
-//                        + "", date, 45000);
-//        model.ThemNV(nv1);
-//        model.ThemNV(nv2);
         this.ReadFilePB();
         this.ReadFileNV();
         this.checkDepartment();
@@ -523,6 +508,9 @@ public class QLNV_Admin extends javax.swing.JPanel {
         this.setEnable(false);
         DisplayNV(this.model.getDsNV());
         this.WriteFileNV();
+        JOptionPane.showMessageDialog(this, 
+                "Thêm nhân viên thành công!", "OK", 
+                JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
 
@@ -541,8 +529,12 @@ public class QLNV_Admin extends javax.swing.JPanel {
                 }
             }
             modelTable.removeRow(row);
+            this.WriteFileNV();
+            JOptionPane.showMessageDialog(this, 
+                  "Xóa nhân viên thành công!", "OK", 
+                 JOptionPane.INFORMATION_MESSAGE);
         }
-        this.WriteFileNV();
+        
     }
 
     public void hienThiChiTiet() {
@@ -577,7 +569,6 @@ public class QLNV_Admin extends javax.swing.JPanel {
               
         double heSoLuong = HeSoLuong(chucVu, nowYear-workYear);
         double tongLuong = luongCB * heSoLuong;       
-        System.out.println(heSoLuong);
         DecimalFormat df = new DecimalFormat("#.##"); 
         String formattedNumber = df.format(tongLuong);   
         this.textField_Salary.setText(formattedNumber.replace(',', '.'));
@@ -613,6 +604,9 @@ public class QLNV_Admin extends javax.swing.JPanel {
         this.xoaForm();
         this.setEnable(false);
         this.WriteFileNV();
+        JOptionPane.showMessageDialog(this, 
+                "Cập nhật thông tin nhân viên thành công!", "OK", 
+                JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
 

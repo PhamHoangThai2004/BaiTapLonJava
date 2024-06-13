@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import model.DSTaiKhoan;
 import model.TaiKhoan;
 
@@ -22,6 +23,10 @@ public class LoginView extends javax.swing.JFrame {
         this.ReadFileTK();
         LoginListen lis = new LoginListen(this);
         button_Login.addActionListener(lis);
+        
+        ImageIcon img = new ImageIcon(getClass().getResource("/icon/QLNV24px.png"));
+        this.setIconImage(img.getImage());
+        this.setTitle("Employee Manager");
     }
     
     @SuppressWarnings("unchecked")

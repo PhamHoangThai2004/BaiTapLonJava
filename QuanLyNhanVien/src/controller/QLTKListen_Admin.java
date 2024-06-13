@@ -28,18 +28,23 @@ public class QLTKListen_Admin implements ActionListener{
                 String tenTK = this.view.textField_UserName.getText();
                 String matKhau = this.view.textField_Pasword.getText();
                 String quyen = this.view.comboBox_Authority.getSelectedItem()+"";
-                if(this.status.equals("Tạo")){
-                    Date ngayTao = new Date();
-                    TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen  , ngayTao);
-                    boolean b = this.view.themTK(TK);
-                    if(!b) JOptionPane.showMessageDialog(view,
-                            "Tài khoản đã tồn tại", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-                else if(this.status.equals("Chi Tiết")){
-                    Date ngayTao = new Date(this.view.textField_CreateDay.getText());
-                    TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen, ngayTao);
-                    this.view.capNhatTK(TK);
-                    this.status = "";
+                if(matKhau.length() < 5) JOptionPane.showMessageDialog(view, 
+                            "Mật khẩu phải có từ 5 ký tự trở lên", "Error", JOptionPane.ERROR_MESSAGE);
+                
+                else {
+                    if(this.status.equals("Tạo")){
+                        Date ngayTao = new Date();
+                        TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen  , ngayTao);              
+                        boolean b = this.view.themTK(TK);
+                        if(!b) JOptionPane.showMessageDialog(view,
+                              "Tài khoản đã tồn tại", "Error", JOptionPane.ERROR_MESSAGE);                
+                    }
+                    else if(this.status.equals("Chi Tiết")){
+                        Date ngayTao = new Date(this.view.textField_CreateDay.getText());
+                        TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen, ngayTao);
+                        this.view.capNhatTK(TK);
+                        this.status = "";
+                    }
                 }
             }
             case "Hủy Bỏ" -> {
@@ -48,6 +53,7 @@ public class QLTKListen_Admin implements ActionListener{
             }
             case "Xóa" -> this.view.xoaTK();
             case "Chi Tiết" -> {
+                this.view.setEnable(false);
                 this.view.hienThiChiTiet();
                 this.status = s;
             }

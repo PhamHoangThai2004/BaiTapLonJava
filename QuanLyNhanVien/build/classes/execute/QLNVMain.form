@@ -11,7 +11,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Logout">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Xu&#x1ea5;t"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/LogOut16px.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Log Out"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -26,16 +29,25 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_ShowStaff">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/showsaff16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Show Staff"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_ShowDepartment">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/department16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Show Department"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_ShowAccount">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/savefile16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Show Account"/>
               </Properties>
             </MenuItem>
@@ -48,11 +60,17 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_About">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/About16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="About"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItem_Exit">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/exit16px.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Exit"/>
               </Properties>
             </MenuItem>

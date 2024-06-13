@@ -3,6 +3,7 @@ package execute;
 import controller.MainListen;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import javax.swing.ImageIcon;
 
 public class QLNVMain extends javax.swing.JFrame {
     public Component component;
@@ -25,6 +26,10 @@ public class QLNVMain extends javax.swing.JFrame {
         menuItem_ShowAccount.addActionListener(mainListen);
         menuItem_About.addActionListener(mainListen);
         menuItem_Exit.addActionListener(mainListen);
+        
+        ImageIcon img = new ImageIcon(getClass().getResource("/icon/QLNV24px.png"));
+        this.setIconImage(img.getImage());
+        this.setTitle("Employee Manager");
     }
     
     @SuppressWarnings("unchecked")
@@ -46,19 +51,23 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menu_Edit.setText("Edit");
 
-        menuItem_Logout.setText("Đăng Xuất");
+        menuItem_Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/LogOut16px.png"))); // NOI18N
+        menuItem_Logout.setText("Log Out");
         menu_Edit.add(menuItem_Logout);
 
         menuBar.add(menu_Edit);
 
         menuView.setText("View");
 
+        menuItem_ShowStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showsaff16px.png"))); // NOI18N
         menuItem_ShowStaff.setText("Show Staff");
         menuView.add(menuItem_ShowStaff);
 
+        menuItem_ShowDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/department16px.png"))); // NOI18N
         menuItem_ShowDepartment.setText("Show Department");
         menuView.add(menuItem_ShowDepartment);
 
+        menuItem_ShowAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/savefile16px.png"))); // NOI18N
         menuItem_ShowAccount.setText("Show Account");
         menuView.add(menuItem_ShowAccount);
 
@@ -66,9 +75,11 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menu_Help.setText("Help");
 
+        menuItem_About.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/About16px.png"))); // NOI18N
         menuItem_About.setText("About");
         menu_Help.add(menuItem_About);
 
+        menuItem_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/exit16px.png"))); // NOI18N
         menuItem_Exit.setText("Exit");
         menu_Help.add(menuItem_Exit);
 
