@@ -52,6 +52,8 @@ public class QLNVListen_Admin implements ActionListener{
                         if(!b) JOptionPane.showMessageDialog(view,
                                 "Mã nhân viên đã tồn tại", "Eror", JOptionPane.ERROR_MESSAGE);
                         else   this.status = "";
+                        this.view.comboBox_Department.setSelectedItem(this.view.TenPB);
+//                                                this.view.TenPB = this.view
                     }  
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(view,
@@ -70,7 +72,10 @@ public class QLNVListen_Admin implements ActionListener{
             }
             case "Tìm Kiếm" -> this.view.timKiemNV();
             case "Hủy" -> this.view.huyTimKiem();
-            case "OK" -> this.view.DisplayNV(this.view.model.getDsNV());
+            case "OK" -> {
+                this.view.TenPB = this.view.comboBox_Department.getSelectedItem()+"";
+                this.view.DisplayNV(this.view.model.getDsNV());
+            }
             default -> {
             }
         }

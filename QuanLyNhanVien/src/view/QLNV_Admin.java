@@ -28,12 +28,14 @@ public class QLNV_Admin extends javax.swing.JPanel {
     public JMenuItem menuItem_Delete;
     public JMenuItem menuItem_Detaild;
     private int MNV;
+    public String TenPB;
     public DSNhanVien model;
     public DSPhongBan dsPhongBan;
     
     public QLNV_Admin() {
         initComponents();
         this.setProperty();
+        DisplayNV(this.model.getDsNV());
     }
     
     private void setProperty() {
@@ -84,7 +86,9 @@ public class QLNV_Admin extends javax.swing.JPanel {
             comboBox_Department.addItem(pb.getTenPB());
         }
         comboBox_Department.addItem("Không Có Phòng Ban");
-        comboBox_Department.setSelectedIndex(-1);
+        comboBox_Department.addItem("Tất Cả");
+        comboBox_Department.setSelectedItem("Tất Cả");
+        this.TenPB = "Tất Cả";
     }
 
     
@@ -397,7 +401,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_Address;
     private javax.swing.JLabel label_BasicSalary;
-    private javax.swing.JLabel label_DepartmentSearch;
+    public javax.swing.JLabel label_DepartmentSearch;
     private javax.swing.JLabel label_DoB;
     private javax.swing.JLabel label_Gender;
     private javax.swing.JLabel label_MNV;
@@ -464,7 +468,6 @@ public class QLNV_Admin extends javax.swing.JPanel {
     }
     
     public void DisplayNV(ArrayList<NhanVien> dsNV) {
-        String tenPB = comboBox_Department.getSelectedItem()+"";
         DefaultTableModel modelTable = new DefaultTableModel();
         table_Staff.setModel(modelTable);
         modelTable.addColumn("ID");
@@ -477,8 +480,8 @@ public class QLNV_Admin extends javax.swing.JPanel {
         modelTable.addColumn("Ngày Vào Làm");
         modelTable.addColumn("Lương Cơ Bản");
 	try {
-            for(NhanVien NV:dsNV) {
-               if(tenPB.equals(NV.getPhongBan().getTenPB())) {
+            if(this.TenPB.equals("Tất Cả")) {
+                for(NhanVien NV:dsNV) {
                     modelTable.addRow(
                                 new Object[] {
                                         NV.getMaNV()+"",
@@ -492,7 +495,28 @@ public class QLNV_Admin extends javax.swing.JPanel {
 					(NV.getNgayVaoLam().getMonth()+1)+"/"+NV.getNgayVaoLam().getDate()+
                                                 "/"+(NV.getNgayVaoLam().getYear()+1900),			
                                         NV.getLuongCB()+""});
-               }
+               
+                }
+            }
+            
+            else {
+                for(NhanVien NV:dsNV) {
+                    if(this.TenPB.equals(NV.getPhongBan().getTenPB())) {
+                         modelTable.addRow(
+                                     new Object[] {
+                                             NV.getMaNV()+"",
+                                             NV.getTenNV()+"",					
+                                             (NV.getNgaySinh().getMonth()+1)+"/"+NV.getNgaySinh().getDate()+
+                                                     "/"+(NV.getNgaySinh().getYear()+1900),			
+                                             (NV.isGioiTinh()?"Nam":"Nữ"),
+                                             NV.getDiaChi().getTenTinh(),
+                                             NV.getPhongBan().getTenPB()+"",
+                                             NV.getChucVu()+"",
+                                             (NV.getNgayVaoLam().getMonth()+1)+"/"+NV.getNgayVaoLam().getDate()+
+                                                     "/"+(NV.getNgayVaoLam().getYear()+1900),			
+                                             NV.getLuongCB()+""});
+                    }
+                }
             }
         } catch (Exception e) {
             System.err.println("Danh sách nhân viên null - dòng 751");
@@ -513,6 +537,8 @@ public class QLNV_Admin extends javax.swing.JPanel {
                 JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
+    
+   
 
     public void xoaNV() {
         DefaultTableModel modelTable = (DefaultTableModel) table_Staff.getModel();
@@ -551,6 +577,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
         String chucVu = modeltable.getValueAt(row, 6)+"";
         String ngayVaoLam = modeltable.getValueAt(row, 7)+"";
         double luongCB = Double.parseDouble(modeltable.getValueAt(row, 8)+"");
+        String phongBan  = modeltable.getValueAt(row, 5)+"";
         
         textField_MNV.setText(maNV+"");
         textField_Name.setText(tenNV);
@@ -561,6 +588,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
         comboBox_Position.setSelectedItem(chucVu);
         textField_StartDay.setText(ngayVaoLam);
         textField_BasicSalary.setText(luongCB+"");
+        comboBox_Department.setSelectedItem(phongBan);
         
         Date dateOfWork = new Date(ngayVaoLam);
         int workYear = dateOfWork.getYear()+1900;

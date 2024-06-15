@@ -51,6 +51,7 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menu_Edit.setText("Edit");
 
+        menuItem_Logout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/LogOut16px.png"))); // NOI18N
         menuItem_Logout.setText("Log Out");
         menu_Edit.add(menuItem_Logout);
@@ -59,14 +60,17 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menuView.setText("View");
 
+        menuItem_ShowStaff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_ShowStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showsaff16px.png"))); // NOI18N
         menuItem_ShowStaff.setText("Show Staff");
         menuView.add(menuItem_ShowStaff);
 
+        menuItem_ShowDepartment.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_ShowDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/department16px.png"))); // NOI18N
         menuItem_ShowDepartment.setText("Show Department");
         menuView.add(menuItem_ShowDepartment);
 
+        menuItem_ShowAccount.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_ShowAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/savefile16px.png"))); // NOI18N
         menuItem_ShowAccount.setText("Show Account");
         menuView.add(menuItem_ShowAccount);
@@ -75,10 +79,12 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menu_Help.setText("Help");
 
+        menuItem_About.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuItem_About.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/About16px.png"))); // NOI18N
         menuItem_About.setText("About");
         menu_Help.add(menuItem_About);
 
+        menuItem_Exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         menuItem_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/exit16px.png"))); // NOI18N
         menuItem_Exit.setText("Exit");
         menu_Help.add(menuItem_Exit);
