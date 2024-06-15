@@ -509,7 +509,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
         DisplayNV(this.model.getDsNV());
         this.WriteFileNV();
         JOptionPane.showMessageDialog(this, 
-                "Thêm nhân viên thành công!", "OK", 
+                "Thêm nhân viên thành công!", "Thêm Nhân Viên", 
                 JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
@@ -518,7 +518,8 @@ public class QLNV_Admin extends javax.swing.JPanel {
         DefaultTableModel modelTable = (DefaultTableModel) table_Staff.getModel();
         int row = table_Staff.getSelectedRow();
         
-        int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa!",
+        int luaChon = JOptionPane.showConfirmDialog(this, 
+                "Bạn có chắc chắn muốn xóa nhân viên này!",
                 "Confirm", JOptionPane.ERROR_MESSAGE);
         
         if(luaChon == JOptionPane.YES_OPTION) {
@@ -531,7 +532,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
             modelTable.removeRow(row);
             this.WriteFileNV();
             JOptionPane.showMessageDialog(this, 
-                  "Xóa nhân viên thành công!", "OK", 
+                  "Xóa nhân viên thành công!", "Xóa Nhân Viên", 
                  JOptionPane.INFORMATION_MESSAGE);
         }
         
@@ -605,7 +606,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
         this.setEnable(false);
         this.WriteFileNV();
         JOptionPane.showMessageDialog(this, 
-                "Cập nhật thông tin nhân viên thành công!", "OK", 
+                "Cập nhật thông tin nhân viên thành công!", "Cập Nhật Thông Tin", 
                 JOptionPane.INFORMATION_MESSAGE);
         return true;
     }

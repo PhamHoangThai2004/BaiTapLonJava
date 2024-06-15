@@ -25,7 +25,7 @@ public class MainListen implements ActionListener {
         String s = e.getActionCommand();
         
         switch (s) {
-            case "Đăng Xuất" -> {
+            case "Log Out" -> {
                 this.view.dispose();
                 LoginView  loginView = new LoginView();
             }

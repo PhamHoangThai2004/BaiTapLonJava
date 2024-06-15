@@ -40,10 +40,17 @@ public class QLTKListen_Admin implements ActionListener{
                               "Tài khoản đã tồn tại", "Error", JOptionPane.ERROR_MESSAGE);                
                     }
                     else if(this.status.equals("Chi Tiết")){
+                        if(this.view.matKhau.equals(matKhau)) {
+                            JOptionPane.showMessageDialog(view, 
+                                    "Mật khẩu mới không được trùng với mật khẩu cũ", 
+                                    "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+                        else {                          
                         Date ngayTao = new Date(this.view.textField_CreateDay.getText());
                         TaiKhoan  TK = new TaiKhoan(tenTK, matKhau, quyen, ngayTao);
                         this.view.capNhatTK(TK);
                         this.status = "";
+                        }
                     }
                 }
             }

@@ -24,6 +24,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
     private DSTaiKhoan dsTaiKhoan;
     public DSPhongBan dsPhongBan;
     private String TTK;
+    public String matKhau;
     
     public QLTK_Admin() {
         initComponents();
@@ -338,6 +339,9 @@ public class QLTK_Admin extends javax.swing.JPanel {
         this.setEnable(false);
         this.WriteFileTK();
         DisplayTK(this.dsTaiKhoan.getDsTK());
+        JOptionPane.showMessageDialog(this, 
+                "Thêm tài khoản thành công!", "Thêm Tài Khoản", 
+                JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
 
@@ -346,6 +350,9 @@ public class QLTK_Admin extends javax.swing.JPanel {
         DisplayTK(this.dsTaiKhoan.getDsTK());
         this.xoaForm();     
         this.setEnable(false);
+        JOptionPane.showMessageDialog(this, 
+                "Đổi mật khẩu thành công!", "Đổi Mật Khẩu", 
+                JOptionPane.INFORMATION_MESSAGE);
         this.WriteFileTK();
     }
 
@@ -353,7 +360,8 @@ public class QLTK_Admin extends javax.swing.JPanel {
         DefaultTableModel modelTable = (DefaultTableModel) table_Account.getModel();
         int row = table_Account.getSelectedRow();
         
-        int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa!",
+        int luaChon = JOptionPane.showConfirmDialog(this, 
+                "Bạn có chắc chắn muốn xóa tài khoản này!",
                 "Confirm", JOptionPane.ERROR_MESSAGE);
         
         if(luaChon == JOptionPane.YES_OPTION) {
@@ -363,9 +371,12 @@ public class QLTK_Admin extends javax.swing.JPanel {
                     this.dsTaiKhoan.XoaTK(this.dsTaiKhoan.getDsTK().get(i));
                 }
             }
-            modelTable.removeRow(row);
-        }
-        this.WriteFileTK();
+            modelTable.removeRow(row); 
+            this.WriteFileTK();
+            JOptionPane.showMessageDialog(this, 
+                  "Xóa tài khoản thành công!", "Xóa Tài Khoản", 
+                 JOptionPane.INFORMATION_MESSAGE);
+        }     
     }
 
     public void hienThiChiTiet() {
@@ -380,6 +391,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
         String authority = modeltable.getValueAt(row, 2)+"";
         String createDay = modeltable.getValueAt(row, 3)+"";
         
+        matKhau = passWord;
         textField_UserName.setText(userName);
         textField_Pasword.setText(passWord);
         comboBox_Authority.setSelectedItem(authority);
@@ -393,7 +405,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
         String userName = this.textField_UserNameSearch.getText();
         ArrayList<String> idCanXoa = new ArrayList<>();
         
-        if(userName.length() > 0) {
+        if(userName.trim().length() > 0) {
             for(int i = 0; i < countRow; i++) {
                 String id = modelTable.getValueAt(i, 0)+"";
                 if(!id.equals(userName)) {
@@ -426,7 +438,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
     private void ReadFileTK() {
         ArrayList<TaiKhoan> taiKhoan = new ArrayList<>();
 
-        try {          
+        try {           
             FileInputStream fis = new FileInputStream("taikhoan.dat");
             ObjectInputStream ois = new ObjectInputStream(fis);
             while(true) {

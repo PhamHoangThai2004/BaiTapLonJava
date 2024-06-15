@@ -313,7 +313,8 @@ public class QLPB_Admin extends javax.swing.JPanel {
         DefaultTableModel modelTable = (DefaultTableModel) table_Department.getModel();
         int row = table_Department.getSelectedRow();
         
-        int luaChon = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa!",
+        int luaChon = JOptionPane.showConfirmDialog(this, 
+                "Bạn có chắc chắn muốn xóa phòng ban này!",
                 "Confirm", JOptionPane.ERROR_MESSAGE);
         
         if(luaChon == JOptionPane.YES_OPTION) {
@@ -324,8 +325,11 @@ public class QLPB_Admin extends javax.swing.JPanel {
                 }
             }
             modelTable.removeRow(row);
-        }
-        this.WriteFilePB();
+            this.WriteFilePB();
+            JOptionPane.showMessageDialog(this, 
+                  "Xóa phòng ban thành công!", "Xóa Phòng Ban", 
+                 JOptionPane.INFORMATION_MESSAGE);
+        }    
     }
     
     public void hienThiChiTiet() {
@@ -359,6 +363,9 @@ public class QLPB_Admin extends javax.swing.JPanel {
         this.xoaForm();
         DisplayPB(this.dsPhongBan.getDsPB());
         this.WriteFilePB();
+        JOptionPane.showMessageDialog(this, 
+                "Thêm phòng ban thành công!", "Thêm Phòng Ban", 
+                JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
 
@@ -372,6 +379,9 @@ public class QLPB_Admin extends javax.swing.JPanel {
         this.xoaForm();     
         this.setEnable(false);
         this.WriteFilePB();
+        JOptionPane.showMessageDialog(this, 
+                "Cập nhật thông tin phòng ban thành công!", "Cập Nhật Thông Tin", 
+                JOptionPane.INFORMATION_MESSAGE);
         return true;
     }
 
