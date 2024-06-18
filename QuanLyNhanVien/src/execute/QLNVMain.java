@@ -3,19 +3,22 @@ package execute;
 import controller.MainListen;
 import java.awt.BorderLayout;
 import java.awt.Component;
-import javax.swing.ImageIcon;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.*;
 
 public class QLNVMain extends javax.swing.JFrame {
     public Component component;
     
     public QLNVMain(Component component) {
-        initComponents();
+        this.init();
         this.setLocationRelativeTo(null);
         this.setProperty();
         this.component = component;    
         this.setLayout(new BorderLayout());      
         this.add(this.component, BorderLayout.CENTER);
         this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     private void setProperty() {
@@ -32,27 +35,23 @@ public class QLNVMain extends javax.swing.JFrame {
         this.setTitle("Employee Manager");
     }
     
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        menuBar = new javax.swing.JMenuBar();
-        menu_Edit = new javax.swing.JMenu();
-        menuItem_Logout = new javax.swing.JMenuItem();
-        menuView = new javax.swing.JMenu();
-        menuItem_ShowStaff = new javax.swing.JMenuItem();
-        menuItem_ShowDepartment = new javax.swing.JMenuItem();
-        menuItem_ShowAccount = new javax.swing.JMenuItem();
-        menu_Help = new javax.swing.JMenu();
-        menuItem_About = new javax.swing.JMenuItem();
-        menuItem_Exit = new javax.swing.JMenuItem();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                       
+    private void init() {
+        menuBar = new JMenuBar();
+        menu_Edit = new JMenu();
+        menuItem_Logout = new JMenuItem();
+        menuView = new JMenu();
+        menuItem_ShowStaff = new JMenuItem();
+        menuItem_ShowDepartment = new JMenuItem();
+        menuItem_ShowAccount = new JMenuItem();
+        menu_Help = new JMenu();
+        menuItem_About = new JMenuItem();
+        menuItem_Exit = new JMenuItem();
 
         menu_Edit.setText("Edit");
 
-        menuItem_Logout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuItem_Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/LogOut16px.png"))); // NOI18N
+        menuItem_Logout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, InputEvent.CTRL_DOWN_MASK));
+        menuItem_Logout.setIcon(new ImageIcon(getClass().getResource("/icon/LogOut16px.png"))); 
         menuItem_Logout.setText("Log Out");
         menu_Edit.add(menuItem_Logout);
 
@@ -60,18 +59,18 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menuView.setText("View");
 
-        menuItem_ShowStaff.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuItem_ShowStaff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/showsaff16px.png"))); // NOI18N
+        menuItem_ShowStaff.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
+        menuItem_ShowStaff.setIcon(new ImageIcon(getClass().getResource("/icon/showsaff16px.png"))); 
         menuItem_ShowStaff.setText("Show Staff");
         menuView.add(menuItem_ShowStaff);
 
-        menuItem_ShowDepartment.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuItem_ShowDepartment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/department16px.png"))); // NOI18N
+        menuItem_ShowDepartment.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_DOWN_MASK));
+        menuItem_ShowDepartment.setIcon(new ImageIcon(getClass().getResource("/icon/department16px.png"))); 
         menuItem_ShowDepartment.setText("Show Department");
         menuView.add(menuItem_ShowDepartment);
 
-        menuItem_ShowAccount.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuItem_ShowAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/savefile16px.png"))); // NOI18N
+        menuItem_ShowAccount.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
+        menuItem_ShowAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/savefile16px.png"))); 
         menuItem_ShowAccount.setText("Show Account");
         menuView.add(menuItem_ShowAccount);
 
@@ -79,13 +78,13 @@ public class QLNVMain extends javax.swing.JFrame {
 
         menu_Help.setText("Help");
 
-        menuItem_About.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        menuItem_About.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/About16px.png"))); // NOI18N
+        menuItem_About.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
+        menuItem_About.setIcon(new ImageIcon(getClass().getResource("/icon/About16px.png"))); 
         menuItem_About.setText("About");
         menu_Help.add(menuItem_About);
 
-        menuItem_Exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
-        menuItem_Exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/exit16px.png"))); // NOI18N
+        menuItem_Exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F4, InputEvent.ALT_DOWN_MASK));
+        menuItem_Exit.setIcon(new ImageIcon(getClass().getResource("/icon/exit16px.png"))); 
         menuItem_Exit.setText("Exit");
         menu_Help.add(menuItem_Exit);
 
@@ -93,33 +92,18 @@ public class QLNVMain extends javax.swing.JFrame {
 
         setJMenuBar(menuBar);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
-        );
-
+        GroupLayout layout = new GroupLayout(getContentPane());
+        this.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(
+                GroupLayout.Alignment.LEADING).addGap(0, 1000, Short.MAX_VALUE));
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGap(0, 602, Short.MAX_VALUE));
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem menuItem_About;
-    private javax.swing.JMenuItem menuItem_Exit;
-    private javax.swing.JMenuItem menuItem_Logout;
-    private javax.swing.JMenuItem menuItem_ShowAccount;
-    private javax.swing.JMenuItem menuItem_ShowDepartment;
-    private javax.swing.JMenuItem menuItem_ShowStaff;
-    public javax.swing.JMenu menuView;
-    private javax.swing.JMenu menu_Edit;
-    private javax.swing.JMenu menu_Help;
-    // End of variables declaration//GEN-END:variables
+    }                        
+                    
+    private JMenuBar menuBar;
+    private JMenuItem menuItem_About, menuItem_Exit, menuItem_Logout, menuItem_ShowAccount, menuItem_ShowDepartment, menuItem_ShowStaff;
+    public JMenu menuView;
+    private JMenu menu_Edit, menu_Help;
 
     public void editPanel(Component component) {
         if(component.getClass() != this.component.getClass()) {

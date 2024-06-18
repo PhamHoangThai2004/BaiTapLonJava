@@ -1,7 +1,9 @@
 package view;
 
+
 import controller.QLNVListen_Admin;
 import controller.QLNVMouseListen_Admin;
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,10 +13,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.ButtonGroup;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import model.DSPhongBan;
 import model.NhanVien;
@@ -22,7 +21,7 @@ import model.PhongBan;
 import model.DSNhanVien;
 import model.Tinh;
 
-public class QLNV_Admin extends javax.swing.JPanel {
+public final class QLNV_Admin extends JPanel {
     public ButtonGroup buttonGroup;
     public JPopupMenu popupMenu;
     public JMenuItem menuItem_Delete;
@@ -31,9 +30,20 @@ public class QLNV_Admin extends javax.swing.JPanel {
     public String TenPB;
     public DSNhanVien model;
     public DSPhongBan dsPhongBan;
+    private JButton button_Add, button_Cancel, button_OK, button_Save, button_Search, button_SearchCancel;
+    public JComboBox<String> comboBox_Address, comboBox_Department, comboBox_Position;
+    private JScrollPane jScrollPane1;
+    private JLabel label_Address, label_BasicSalary, label_DepartmentSearch, label_DoB, label_Gender;
+    private JLabel label_MNV, label_MNVSearch, label_Name, label_Position, label_Salary, label_StaffList, label_StartDay;
+    public JRadioButton radioButton_Female, radioButton_Male;
+    private JSeparator separator_Button, separator_Staff;
+    public JTable table_Staff;
+    public JTextField textField_BasicSalary, textField_DoB, textField_MNV, textField_Name, textField_StartDay;
+    private JTextField textField_MNVSearch, textField_Salary;
+
     
     public QLNV_Admin() {
-        initComponents();
+        this.setView();
         this.setProperty();
         DisplayNV(this.model.getDsNV());
     }
@@ -91,59 +101,58 @@ public class QLNV_Admin extends javax.swing.JPanel {
         this.TenPB = "Tất Cả";
     }
 
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+                           
+    private void setView() {
+        jScrollPane1 = new JScrollPane();
+        table_Staff = new JTable();
+        label_MNVSearch = new JLabel();
+        textField_MNVSearch = new JTextField();
+        label_DepartmentSearch = new JLabel();
+        comboBox_Department = new JComboBox<>();
+        separator_Staff = new JSeparator();
+        label_StaffList = new JLabel();
+        button_Search = new JButton();
+        label_MNV = new JLabel();
+        label_DoB = new JLabel();
+        textField_MNV = new JTextField();
+        label_Gender = new JLabel();
+        textField_Name = new JTextField();
+        textField_DoB = new JTextField();
+        radioButton_Male = new JRadioButton();
+        radioButton_Female = new JRadioButton();
+        label_Address = new JLabel();
+        comboBox_Address = new JComboBox<>();
+        label_Position = new JLabel();
+        label_StartDay = new JLabel();
+        label_BasicSalary = new JLabel();
+        comboBox_Position = new JComboBox<>();
+        textField_StartDay = new JTextField();
+        textField_BasicSalary = new JTextField();
+        label_Name = new JLabel();
+        label_Salary = new JLabel();
+        textField_Salary = new JTextField();
+        button_Save = new JButton();
+        button_Cancel = new JButton();
+        button_Add = new JButton();
+        separator_Button = new JSeparator();
+        button_OK = new JButton();
+        button_SearchCancel = new JButton();
+        
+        Font font1 = new Font("Segoe UI", 0, 12);
+        Font font2 = new Font("Segoe UI", 0, 14);
+        Font font3 = new Font("Segoe UI", 0, 18);
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_Staff = new javax.swing.JTable();
-        label_MNVSearch = new javax.swing.JLabel();
-        textField_MNVSearch = new javax.swing.JTextField();
-        label_DepartmentSearch = new javax.swing.JLabel();
-        comboBox_Department = new javax.swing.JComboBox<>();
-        separator_Staff = new javax.swing.JSeparator();
-        label_StaffList = new javax.swing.JLabel();
-        button_Search = new javax.swing.JButton();
-        label_MNV = new javax.swing.JLabel();
-        label_DoB = new javax.swing.JLabel();
-        textField_MNV = new javax.swing.JTextField();
-        label_Gender = new javax.swing.JLabel();
-        textField_Name = new javax.swing.JTextField();
-        textField_DoB = new javax.swing.JTextField();
-        radioButton_Male = new javax.swing.JRadioButton();
-        radioButton_Female = new javax.swing.JRadioButton();
-        label_Address = new javax.swing.JLabel();
-        comboBox_Address = new javax.swing.JComboBox<>();
-        label_Position = new javax.swing.JLabel();
-        label_StartDay = new javax.swing.JLabel();
-        label_BasicSalary = new javax.swing.JLabel();
-        comboBox_Position = new javax.swing.JComboBox<>();
-        textField_StartDay = new javax.swing.JTextField();
-        textField_BasicSalary = new javax.swing.JTextField();
-        label_Name = new javax.swing.JLabel();
-        label_Salary = new javax.swing.JLabel();
-        textField_Salary = new javax.swing.JTextField();
-        button_Save = new javax.swing.JButton();
-        button_Cancel = new javax.swing.JButton();
-        button_Add = new javax.swing.JButton();
-        separator_Button = new javax.swing.JSeparator();
-        button_OK = new javax.swing.JButton();
-        button_SearchCancel = new javax.swing.JButton();
-
-        table_Staff.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        table_Staff.setModel(new javax.swing.table.DefaultTableModel(
+        table_Staff.setFont(font2); 
+        table_Staff.setModel(new DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
-                "ID", "Họ Tên", "Ngày Sinh", "Giới Tính", "Địa Chỉ", "Phòng Ban", "Chức Vụ", "Ngày Vào Làm", "Lương Cơ Bản"
-            }
+                "ID", "Họ Tên", "Ngày Sinh", "Giới Tính", "Địa Chỉ",
+                "Phòng Ban", "Chức Vụ", "Ngày Vào Làm", "Lương Cơ Bản"}
         ) {
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false
             };
-
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
@@ -154,276 +163,198 @@ public class QLNV_Admin extends javax.swing.JPanel {
             table_Staff.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        label_MNVSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_MNVSearch.setFont(font2); 
         label_MNVSearch.setText("Mã Nhân Viên:");
 
-        textField_MNVSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_MNVSearch.setFont(font2); 
 
-        label_DepartmentSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_DepartmentSearch.setFont(font2);
         label_DepartmentSearch.setText("Phòng Ban:");
 
-        comboBox_Department.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboBox_Department.setFont(font2); 
 
-        label_StaffList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        label_StaffList.setFont(font1); 
         label_StaffList.setText("Danh sách nhân viên:");
 
-        button_Search.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Search.setFont(font3);
         button_Search.setText("Tìm Kiếm");
 
-        label_MNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_MNV.setFont(font2); 
         label_MNV.setText("Mã Nhân Viên:");
 
-        label_DoB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_DoB.setFont(font2); 
         label_DoB.setText("Ngày Sinh:");
 
-        textField_MNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_MNV.setFont(font2);
         textField_MNV.setEnabled(false);
 
-        label_Gender.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_Gender.setFont(font2); 
         label_Gender.setText("Giới Tính: ");
 
-        textField_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_Name.setFont(font2); 
         textField_Name.setEnabled(false);
 
-        textField_DoB.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_DoB.setFont(font2); 
         textField_DoB.setEnabled(false);
 
-        radioButton_Male.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radioButton_Male.setFont(font2); 
         radioButton_Male.setText("Nam");
         radioButton_Male.setEnabled(false);
 
-        radioButton_Female.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        radioButton_Female.setFont(font2); 
         radioButton_Female.setText("Nữ");
         radioButton_Female.setEnabled(false);
 
-        label_Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_Address.setFont(font2);
         label_Address.setText("Địa Chỉ:");
 
-        comboBox_Address.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboBox_Address.setFont(font2);
         comboBox_Address.setEnabled(false);
 
-        label_Position.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_Position.setFont(font2); 
         label_Position.setText("Chức Vụ:");
 
-        label_StartDay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_StartDay.setFont(font2); 
         label_StartDay.setText("Ngày Vào Làm:");
 
-        label_BasicSalary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_BasicSalary.setFont(font2); 
         label_BasicSalary.setText("Lương Cơ Bản:");
 
-        comboBox_Position.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboBox_Position.setFont(font2);
         comboBox_Position.setEnabled(false);
 
-        textField_StartDay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_StartDay.setFont(font2); 
         textField_StartDay.setEnabled(false);
 
-        textField_BasicSalary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_BasicSalary.setFont(font2); 
         textField_BasicSalary.setEnabled(false);
 
-        label_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_Name.setFont(font2); 
         label_Name.setText("Họ và Tên:");
 
-        label_Salary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        label_Salary.setFont(font2);
         label_Salary.setText("Tổng Lương:");
 
-        textField_Salary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textField_Salary.setFont(font2);
         textField_Salary.setEnabled(false);
 
-        button_Save.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        button_Save.setFont(font2);
         button_Save.setText("Lưu");
 
-        button_Cancel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        button_Cancel.setFont(font2); 
         button_Cancel.setText("Hủy Bỏ");
 
-        button_Add.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        button_Add.setFont(font2);
         button_Add.setText("Thêm");
 
-        button_OK.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        button_OK.setFont(font2); 
         button_OK.setText("OK");
 
-        button_SearchCancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_SearchCancel.setFont(font3); 
         button_SearchCancel.setText("Hủy");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(separator_Staff, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(label_MNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label_DoB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label_Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textField_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(textField_MNV)
-                            .addComponent(textField_DoB, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(label_Address, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label_Gender, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(label_Position, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBox_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBox_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioButton_Male)
-                                .addGap(40, 40, 40)
-                                .addComponent(radioButton_Female)))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(label_BasicSalary)
-                                    .addComponent(label_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(textField_BasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textField_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_StartDay)
-                                .addGap(18, 18, 18)
-                                .addComponent(textField_StartDay, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label_StaffList)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(button_Save, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_Cancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(button_Add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(separator_Button)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+        .addGroup(layout.createSequentialGroup()
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup().addGap(22, 22, 22)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+            .addComponent(label_MNV, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label_DoB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label_Name, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+            .addComponent(textField_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+            .addComponent(textField_MNV)
+            .addComponent(textField_DoB, GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)).addGap(39, 39, 39)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+            .addComponent(label_Address, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label_Gender, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+            .addComponent(label_Position, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addGap(18, 18, 18)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(comboBox_Address, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+            .addComponent(comboBox_Position, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(radioButton_Male).addGap(40, 40, 40)
+            .addComponent(radioButton_Female))).addGap(37, 37, 37)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup()
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+            .addComponent(label_BasicSalary)
+            .addComponent(label_Salary, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)).addGap(21, 21, 21)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+            .addComponent(textField_BasicSalary, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+            .addComponent(textField_Salary, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)))
+        .addGroup(layout.createSequentialGroup()
+            .addComponent(label_StartDay).addGap(18, 18, 18)
+            .addComponent(textField_StartDay, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE))))
+        .addGroup(layout.createSequentialGroup().addContainerGap()
+            .addComponent(label_StaffList))).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(layout.createSequentialGroup().addContainerGap()
+            .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 840, GroupLayout.PREFERRED_SIZE)
+        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+        .addGroup(layout.createSequentialGroup().addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(button_Save, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+            .addComponent(button_Cancel, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+            .addComponent(button_Add, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)).addGap(20, 20, 20))
+        .addGroup(layout.createSequentialGroup().addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(separator_Button).addContainerGap())))
+        .addGroup(layout.createSequentialGroup().addGap(20, 20, 20)
+            .addComponent(label_MNVSearch).addGap(18, 18, 18)
+            .addComponent(textField_MNVSearch, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+            .addComponent(button_Search).addGap(18, 18, 18)
+            .addComponent(button_SearchCancel).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(label_DepartmentSearch).addGap(18, 18, 18)
+            .addComponent(comboBox_Department, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+            .addComponent(button_OK).addGap(71, 71, 71)));
+        
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addGap(26, 26, 26)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                 .addComponent(label_MNVSearch)
-                .addGap(18, 18, 18)
-                .addComponent(textField_MNVSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(button_Search)
-                .addGap(18, 18, 18)
-                .addComponent(button_SearchCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(textField_MNVSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                 .addComponent(label_DepartmentSearch)
-                .addGap(18, 18, 18)
-                .addComponent(comboBox_Department, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(comboBox_Department, GroupLayout.PREFERRED_SIZE,GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_Search)
                 .addComponent(button_OK)
-                .addGap(71, 71, 71))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_MNVSearch)
-                    .addComponent(textField_MNVSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_DepartmentSearch)
-                    .addComponent(comboBox_Department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_Search)
-                    .addComponent(button_OK)
-                    .addComponent(button_SearchCancel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separator_Staff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(button_SearchCancel)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separator_Staff, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
                 .addComponent(label_StaffList)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 260, GroupLayout.PREFERRED_SIZE).addGap(31, 31, 31)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_Name)
-                                .addGap(24, 24, 24)
-                                .addComponent(label_DoB))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(textField_MNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_Gender)
-                                    .addComponent(radioButton_Male)
-                                    .addComponent(radioButton_Female)
-                                    .addComponent(label_StartDay)
-                                    .addComponent(textField_StartDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_MNV))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(textField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_Address)
-                                    .addComponent(comboBox_Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_BasicSalary)
-                                    .addComponent(textField_BasicSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(textField_DoB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_Position)
-                                    .addComponent(comboBox_Position, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textField_Salary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_Salary)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(button_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(button_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(separator_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(button_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(113, Short.MAX_VALUE))
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_Add;
-    private javax.swing.JButton button_Cancel;
-    private javax.swing.JButton button_OK;
-    private javax.swing.JButton button_Save;
-    private javax.swing.JButton button_Search;
-    private javax.swing.JButton button_SearchCancel;
-    public javax.swing.JComboBox<String> comboBox_Address;
-    public javax.swing.JComboBox<String> comboBox_Department;
-    public javax.swing.JComboBox<String> comboBox_Position;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel label_Address;
-    private javax.swing.JLabel label_BasicSalary;
-    public javax.swing.JLabel label_DepartmentSearch;
-    private javax.swing.JLabel label_DoB;
-    private javax.swing.JLabel label_Gender;
-    private javax.swing.JLabel label_MNV;
-    private javax.swing.JLabel label_MNVSearch;
-    private javax.swing.JLabel label_Name;
-    private javax.swing.JLabel label_Position;
-    private javax.swing.JLabel label_Salary;
-    private javax.swing.JLabel label_StaffList;
-    private javax.swing.JLabel label_StartDay;
-    public javax.swing.JRadioButton radioButton_Female;
-    public javax.swing.JRadioButton radioButton_Male;
-    private javax.swing.JSeparator separator_Button;
-    private javax.swing.JSeparator separator_Staff;
-    public javax.swing.JTable table_Staff;
-    public javax.swing.JTextField textField_BasicSalary;
-    public javax.swing.JTextField textField_DoB;
-    public javax.swing.JTextField textField_MNV;
-    private javax.swing.JTextField textField_MNVSearch;
-    public javax.swing.JTextField textField_Name;
-    private javax.swing.JTextField textField_Salary;
-    public javax.swing.JTextField textField_StartDay;
-    // End of variables declaration//GEN-END:variables
+                .addComponent(label_Name).addGap(24, 24, 24)
+                .addComponent(label_DoB))
+            .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(textField_MNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_Gender)
+                .addComponent(radioButton_Male)
+                .addComponent(radioButton_Female)
+                .addComponent(label_StartDay)
+                .addComponent(textField_StartDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_MNV)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(textField_Name, GroupLayout.PREFERRED_SIZE,GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_Address)
+                .addComponent(comboBox_Address, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_BasicSalary)
+                .addComponent(textField_BasicSalary, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(textField_DoB, GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_Position)
+                .addComponent(comboBox_Position, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(textField_Salary,GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_Salary))))).addGroup(layout.createSequentialGroup().addGap(19, 19, 19)
+                .addComponent(button_Save, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+                .addComponent(button_Cancel, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE).addGap(23, 23, 23)
+                .addComponent(separator_Button, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+                .addComponent(button_Add, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))).addContainerGap(113, Short.MAX_VALUE)));
+    }                      
 
     public void setEnable(boolean b) {
         textField_MNV.setEnabled(b);
@@ -519,7 +450,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
                 }
             }
         } catch (Exception e) {
-            System.err.println("Danh sách nhân viên null - dòng 751");
+            System.err.println("Danh sách nhân viên null - QLNVAdmin");
         }
     }
     
@@ -664,7 +595,6 @@ public class QLNV_Admin extends javax.swing.JPanel {
                         modelTable.removeRow(i);
                     }
                     catch(Exception e) {
-                        e.printStackTrace();
                     }
                     break;
                 }
@@ -696,7 +626,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Không tìm thấy file Phòng Ban - dòng 685");
+            System.err.println("Lỗi đọc file Phòng Ban - QLNV_Admin");
         }
         this.dsPhongBan.setDsPB(phongBan);
     }
@@ -719,7 +649,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Lỗi đọc file - dòng 1071");
+            System.err.println("Lỗi đọc file Nhân Viên - QLNV_Admin");
         }
         this.model.setDsNV(nhanVien);       
     }
@@ -733,7 +663,7 @@ public class QLNV_Admin extends javax.swing.JPanel {
             }
             oos.close();
         } catch (IOException e) {
-            System.err.println("Lỗi ghi file - dòng 1102");
+            System.err.println("Lỗi ghi file Nhân Viên - dòng 1102");
         }
     }
 }

@@ -1,23 +1,23 @@
 package view;
 
+
 import controller.QLTKListen_Admin;
 import controller.QLTKMouseListen_Admin;
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import model.DSPhongBan;
 import model.DSTaiKhoan;
 import model.PhongBan;
 import model.TaiKhoan;
 
-public class QLTK_Admin extends javax.swing.JPanel {
+public class QLTK_Admin extends JPanel {
     public JPopupMenu popupMenu;
     public JMenuItem menuItem_Delete;
     public JMenuItem menuItem_Detaild;
@@ -25,9 +25,17 @@ public class QLTK_Admin extends javax.swing.JPanel {
     public DSPhongBan dsPhongBan;
     private String TTK;
     public String matKhau;
+    private JButton button_Cancel, button_Create, button_Save, button_Search, button_SearchCancel;
+    public JComboBox<String> comboBox_Authority;
+    private JScrollPane jScrollPane1;
+    private JLabel label_AccountList, label_Authority, label_CreateDay, label_Password, label_UerNameSearch, label_UserName;
+    private JSeparator separator_Button, separator_Search;
+    public JTable table_Account;
+    public JTextField textField_CreateDay, textField_Pasword, textField_UserName;
+    private JTextField textField_UserNameSearch;
     
     public QLTK_Admin() {
-        initComponents();
+        this.setView();
         this.setProperty();
 
     }
@@ -69,43 +77,42 @@ public class QLTK_Admin extends javax.swing.JPanel {
     }
 
     
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+                            
+    private void setView() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_Account = new javax.swing.JTable();
-        label_AccountList = new javax.swing.JLabel();
-        label_UserName = new javax.swing.JLabel();
-        label_Password = new javax.swing.JLabel();
-        textField_UserName = new javax.swing.JTextField();
-        textField_Pasword = new javax.swing.JTextField();
-        label_Authority = new javax.swing.JLabel();
-        comboBox_Authority = new javax.swing.JComboBox<>();
-        button_Create = new javax.swing.JButton();
-        button_Save = new javax.swing.JButton();
-        button_Cancel = new javax.swing.JButton();
-        label_UerNameSearch = new javax.swing.JLabel();
-        textField_UserNameSearch = new javax.swing.JTextField();
-        label_CreateDay = new javax.swing.JLabel();
-        textField_CreateDay = new javax.swing.JTextField();
-        separator_Search = new javax.swing.JSeparator();
-        separator_Button = new javax.swing.JSeparator();
-        button_Search = new javax.swing.JButton();
-        button_SearchCancel = new javax.swing.JButton();
+        jScrollPane1 = new JScrollPane();
+        table_Account = new JTable();
+        label_AccountList = new JLabel();
+        label_UserName = new JLabel();
+        label_Password = new JLabel();
+        textField_UserName = new JTextField();
+        textField_Pasword = new JTextField();
+        label_Authority = new JLabel();
+        comboBox_Authority = new JComboBox<>();
+        button_Create = new JButton();
+        button_Save = new JButton();
+        button_Cancel = new JButton();
+        label_UerNameSearch = new JLabel();
+        textField_UserNameSearch = new JTextField();
+        label_CreateDay = new JLabel();
+        textField_CreateDay = new JTextField();
+        separator_Search = new JSeparator();
+        separator_Button = new JSeparator();
+        button_Search = new JButton();
+        button_SearchCancel = new JButton();
+        
+        Font font1 = new Font("Segoe UI", 0, 12);
+        Font font2 = new Font("Segoe UI", 0, 14);
+        Font font3 = new Font("Segoe UI", 0, 18);
 
-        table_Account.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        table_Account.setModel(new javax.swing.table.DefaultTableModel(
+        table_Account.setFont(font2); 
+        table_Account.setModel(new DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
-                "Tài Khoản", "Mật Khẩu", "Quyền", "Ngày Tạo"
-            }
-        ) {
+                "Tài Khoản", "Mật Khẩu", "Quyền", "Ngày Tạo"}) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
+                false, false, false, false};
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -114,172 +121,119 @@ public class QLTK_Admin extends javax.swing.JPanel {
         table_Account.setRowHeight(25);
         jScrollPane1.setViewportView(table_Account);
 
-        label_AccountList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        label_AccountList.setFont(font1); 
         label_AccountList.setText("Danh sách tài khoản:");
 
-        label_UserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_UserName.setFont(font3); 
         label_UserName.setText("Tên Tài Khoản:");
 
-        label_Password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Password.setFont(font3); 
         label_Password.setText("Mật Khẩu:");
 
-        textField_UserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_UserName.setFont(font3); 
         textField_UserName.setEnabled(false);
 
-        textField_Pasword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_Pasword.setFont(font3); 
         textField_Pasword.setEnabled(false);
 
-        label_Authority.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Authority.setFont(font3); 
         label_Authority.setText("Quyền:");
 
-        comboBox_Authority.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        comboBox_Authority.setFont(font3); 
         comboBox_Authority.setEnabled(false);
 
-        button_Create.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Create.setFont(font3); 
         button_Create.setText("Tạo");
 
-        button_Save.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Save.setFont(font3); 
         button_Save.setText("Lưu");
 
-        button_Cancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Cancel.setFont(font3); 
         button_Cancel.setText("Hủy Bỏ");
 
-        label_UerNameSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_UerNameSearch.setFont(font3); 
         label_UerNameSearch.setText("Tài Khoản:");
 
-        textField_UserNameSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_UserNameSearch.setFont(font3); 
 
-        label_CreateDay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_CreateDay.setFont(font3); 
         label_CreateDay.setText("Ngày Tạo:");
 
-        textField_CreateDay.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_CreateDay.setFont(font3); 
         textField_CreateDay.setEnabled(false);
 
-        button_Search.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Search.setFont(font3); 
         button_Search.setText("Tìm Kiếm");
 
-        button_SearchCancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_SearchCancel.setFont(font3); 
         button_SearchCancel.setText("Hủy");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label_AccountList))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(label_UerNameSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(textField_UserNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(button_Search)
-                        .addGap(18, 18, 18)
-                        .addComponent(button_SearchCancel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(label_UserName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label_Password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textField_UserName, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                            .addComponent(textField_Pasword))
-                        .addGap(189, 189, 189)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(label_CreateDay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(label_Authority, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboBox_Authority, 0, 230, Short.MAX_VALUE)
-                            .addComponent(textField_CreateDay))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(separator_Search, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(separator_Button))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(button_Cancel, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                .addComponent(button_Save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(button_Create, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 16, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_UerNameSearch)
-                    .addComponent(textField_UserNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_Search)
-                    .addComponent(button_SearchCancel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separator_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(button_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(separator_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(button_Create, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(115, 115, 115))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label_AccountList)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label_UserName)
-                            .addComponent(textField_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_Authority)
-                            .addComponent(comboBox_Authority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_Password)
-                    .addComponent(textField_Pasword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_CreateDay)
-                    .addComponent(textField_CreateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85))
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_Cancel;
-    private javax.swing.JButton button_Create;
-    private javax.swing.JButton button_Save;
-    private javax.swing.JButton button_Search;
-    private javax.swing.JButton button_SearchCancel;
-    public javax.swing.JComboBox<String> comboBox_Authority;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel label_AccountList;
-    private javax.swing.JLabel label_Authority;
-    private javax.swing.JLabel label_CreateDay;
-    private javax.swing.JLabel label_Password;
-    private javax.swing.JLabel label_UerNameSearch;
-    private javax.swing.JLabel label_UserName;
-    private javax.swing.JSeparator separator_Button;
-    private javax.swing.JSeparator separator_Search;
-    public javax.swing.JTable table_Account;
-    public javax.swing.JTextField textField_CreateDay;
-    public javax.swing.JTextField textField_Pasword;
-    public javax.swing.JTextField textField_UserName;
-    private javax.swing.JTextField textField_UserNameSearch;
-    // End of variables declaration//GEN-END:variables
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+                .addComponent(label_AccountList))
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+                .addComponent(label_UerNameSearch).addGap(18, 18, 18)
+                .addComponent(textField_UserNameSearch, GroupLayout.PREFERRED_SIZE, 280, GroupLayout.PREFERRED_SIZE).addGap(50, 50, 50)
+                .addComponent(button_Search).addGap(18, 18, 18)
+                .addComponent(button_SearchCancel))
+            .addGroup(layout.createSequentialGroup().addGap(22, 22, 22)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(label_UserName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_Password, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(textField_UserName, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(textField_Pasword)).addGap(189, 189, 189)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(label_CreateDay, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_Authority, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)).addGap(28, 28, 28)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(comboBox_Authority, 0, 230, Short.MAX_VALUE)
+                .addComponent(textField_CreateDay)))).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(separator_Search, GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 840, GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addGap(4, 4, 4)
+                .addComponent(separator_Button))
+            .addGroup(layout.createSequentialGroup().addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(button_Cancel, GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addComponent(button_Save, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(button_Create, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)).addGap(0, 16, Short.MAX_VALUE)))));
+        
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addGap(39, 39, 39)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_UerNameSearch)
+                .addComponent(textField_UserNameSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_Search)
+                .addComponent(button_SearchCancel)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separator_Search, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(button_Save, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+                .addComponent(button_Cancel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+                .addComponent(separator_Button, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE).addGap(35, 35, 35)
+                .addComponent(button_Create, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(115, 115, 115))
+            .addGroup(layout.createSequentialGroup().addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_AccountList).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_UserName)
+                .addComponent(textField_UserName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_Authority)
+                .addComponent(comboBox_Authority, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))).addGap(14, 14, 14)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_Password)
+                .addComponent(textField_Pasword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_CreateDay)
+                .addComponent(textField_CreateDay, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)).addGap(85, 85, 85)));
+    }                   
 
     public void setEnable(boolean b) {
         textField_UserName.setEnabled(b);
@@ -454,6 +408,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
+            System.err.println("Không tìm thấy file Tài Khoản - QLTJ_Admin");
         }
         this.dsTaiKhoan.setDsTK(taiKhoan);
     }
@@ -467,6 +422,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
             }
             oos.close();
         } catch (IOException e) {
+            System.err.println("Không tìm thấy file Tài Khoản - QLTK_Admin");
         }
     }
     
@@ -489,6 +445,7 @@ public class QLTK_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
+            System.err.println("Không tìm thấy file Phòng Ban - QLTK_ Admin");
         }
         this.dsPhongBan.setDsPB(phongBan);
     }

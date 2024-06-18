@@ -1,15 +1,14 @@
 package view;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 import controller.*;
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import model.*;
 
@@ -20,9 +19,16 @@ public class QLPB_Admin extends javax.swing.JPanel {
     private String MPB;
     private DSPhongBan dsPhongBan;
     private DSNhanVien dsNhanVien;
+    private JButton button_Add, button_Cancel, button_Save, button_Search, button_SearchCancel;
+    private JScrollPane jScrollPane1;
+    private JLabel label_DepartmentList, label_Employes, label_Found, label_MPB, label_MPBSearch, label_Name;
+    private JSeparator separator_Button, separator_Search;
+    public JTable table_Department;
+    public JTextField textField_Found, textField_MPB, textField_Name;
+    private JTextField textField_Employes, textField_MPBSearch;
     
     public QLPB_Admin() {
-        initComponents();
+        this.setView();
         this.setProperty();
     }
     
@@ -53,41 +59,39 @@ public class QLPB_Admin extends javax.swing.JPanel {
         this.ReadFileNV();
         DisplayPB(this.dsPhongBan.getDsPB());
     }
+                  
+    private void setView() {
+        jScrollPane1 = new JScrollPane();
+        table_Department = new JTable();
+        label_DepartmentList = new JLabel();
+        label_MPB = new JLabel();
+        label_Found = new JLabel();
+        textField_MPB = new JTextField();
+        textField_Name = new JTextField();
+        textField_Found = new JTextField();
+        label_Employes = new JLabel();
+        label_Name = new JLabel();
+        textField_Employes = new JTextField();
+        button_Save = new JButton();
+        button_Cancel = new JButton();
+        separator_Button = new JSeparator();
+        button_Add = new JButton();
+        label_MPBSearch = new JLabel();
+        textField_MPBSearch = new JTextField();
+        button_Search = new JButton();
+        button_SearchCancel = new JButton();
+        separator_Search = new JSeparator();
+        
+        Font font1 = new Font("Segoe UI", 0, 12);
+        Font font2 = new Font("Segoe UI", 0, 14);
+        Font font3 = new Font("Segoe UI", 0, 18);
 
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_Department = new javax.swing.JTable();
-        label_DepartmentList = new javax.swing.JLabel();
-        label_MPB = new javax.swing.JLabel();
-        label_Found = new javax.swing.JLabel();
-        textField_MPB = new javax.swing.JTextField();
-        textField_Name = new javax.swing.JTextField();
-        textField_Found = new javax.swing.JTextField();
-        label_Employes = new javax.swing.JLabel();
-        label_Name = new javax.swing.JLabel();
-        textField_Employes = new javax.swing.JTextField();
-        button_Save = new javax.swing.JButton();
-        button_Cancel = new javax.swing.JButton();
-        separator_Button = new javax.swing.JSeparator();
-        button_Add = new javax.swing.JButton();
-        label_MPBSearch = new javax.swing.JLabel();
-        textField_MPBSearch = new javax.swing.JTextField();
-        button_Search = new javax.swing.JButton();
-        button_SearchCancel = new javax.swing.JButton();
-        separator_Search = new javax.swing.JSeparator();
-
-        table_Department.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        table_Department.setModel(new javax.swing.table.DefaultTableModel(
+        table_Department.setFont(font2); 
+        table_Department.setModel(new DefaultTableModel(
             new Object [][] {
-
             },
             new String [] {
-                "Mã Phòng Ban", "Tên Phòng  Ban", "Ngày Thành Lập"
-            }
+                "Mã Phòng Ban", "Tên Phòng  Ban", "Ngày Thành Lập"}
         ) {
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -100,181 +104,126 @@ public class QLPB_Admin extends javax.swing.JPanel {
         table_Department.setRowHeight(25);
         jScrollPane1.setViewportView(table_Department);
 
-        label_DepartmentList.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        label_DepartmentList.setFont(font1); 
         label_DepartmentList.setText("Danh sách phòng ban:");
 
-        label_MPB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_MPB.setFont(font3); 
         label_MPB.setText("Mã Phòng Ban:");
 
-        label_Found.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Found.setFont(font3); 
         label_Found.setText("Ngày Thành Lập:");
 
-        textField_MPB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_MPB.setFont(font3); 
         textField_MPB.setEnabled(false);
 
-        textField_Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_Name.setFont(font3); 
         textField_Name.setEnabled(false);
 
-        textField_Found.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_Found.setFont(font3); 
         textField_Found.setEnabled(false);
 
-        label_Employes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Employes.setFont(font3); 
         label_Employes.setText("Số Nhân Viên:");
 
-        label_Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Name.setFont(font3); 
         label_Name.setText("Tên Phòng Ban:");
 
-        textField_Employes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_Employes.setFont(font3); 
         textField_Employes.setEnabled(false);
 
-        button_Save.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Save.setFont(font3); 
         button_Save.setText("Lưu");
 
-        button_Cancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Cancel.setFont(font3); 
         button_Cancel.setText("Hủy Bỏ");
 
-        button_Add.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Add.setFont(font3); 
         button_Add.setText("Thêm");
 
-        label_MPBSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_MPBSearch.setFont(font3); 
         label_MPBSearch.setText("Mã Phòng Ban:");
 
-        textField_MPBSearch.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_MPBSearch.setFont(font3); 
 
-        button_Search.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Search.setFont(font3); 
         button_Search.setText("Tìm Kiếm");
 
-        button_SearchCancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_SearchCancel.setFont(font3); 
         button_SearchCancel.setText("Hủy");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addGap(22, 22, 22)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(label_MPB, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_Name, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(textField_Name, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(textField_MPB)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(label_Found)
+                .addComponent(label_Employes, GroupLayout.PREFERRED_SIZE, 133, GroupLayout.PREFERRED_SIZE)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                .addComponent(textField_Found, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(textField_Employes)).addGap(113, 113, 113))
+                .addComponent(separator_Search)
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(label_MPB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textField_Name, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(textField_MPB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Found)
-                    .addComponent(label_Employes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textField_Found, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(textField_Employes))
-                .addGap(113, 113, 113))
-            .addComponent(separator_Search)
+                .addComponent(label_MPBSearch).addGap(18, 18, 18)
+                .addComponent(textField_MPBSearch, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE).addGap(46, 46, 46)
+                .addComponent(button_Search).addGap(52, 52, 52)
+                .addComponent(button_SearchCancel, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
+                .addComponent(label_DepartmentList)).addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 800, GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label_MPBSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(textField_MPBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(button_Search)
-                        .addGap(52, 52, 52)
-                        .addComponent(button_SearchCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(label_DepartmentList))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(separator_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(button_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(button_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(button_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34))))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_MPBSearch)
-                    .addComponent(textField_MPBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_Search)
-                    .addComponent(button_SearchCancel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(separator_Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label_DepartmentList, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(button_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(button_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(separator_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(button_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textField_Employes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label_Employes)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(label_MPB)
-                                .addComponent(textField_MPB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(label_Found)
-                                .addComponent(textField_Found, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label_Name)
-                            .addComponent(textField_Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_Add;
-    private javax.swing.JButton button_Cancel;
-    private javax.swing.JButton button_Save;
-    private javax.swing.JButton button_Search;
-    private javax.swing.JButton button_SearchCancel;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel label_DepartmentList;
-    private javax.swing.JLabel label_Employes;
-    private javax.swing.JLabel label_Found;
-    private javax.swing.JLabel label_MPB;
-    private javax.swing.JLabel label_MPBSearch;
-    private javax.swing.JLabel label_Name;
-    private javax.swing.JSeparator separator_Button;
-    private javax.swing.JSeparator separator_Search;
-    public javax.swing.JTable table_Department;
-    private javax.swing.JTextField textField_Employes;
-    public javax.swing.JTextField textField_Found;
-    public javax.swing.JTextField textField_MPB;
-    private javax.swing.JTextField textField_MPBSearch;
-    public javax.swing.JTextField textField_Name;
-    // End of variables declaration//GEN-END:variables
+                .addComponent(separator_Button, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE).addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addComponent(button_Cancel, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_Save, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)).addGap(35, 35, 35))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(button_Add, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE).addGap(34, 34, 34)))))));
+        
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addGap(21, 21, 21)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_MPBSearch)
+                .addComponent(textField_MPBSearch, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(button_Search)
+                .addComponent(button_SearchCancel)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(separator_Search, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_DepartmentList, GroupLayout.PREFERRED_SIZE, 16, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 360, GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup().addGap(47, 47, 47)
+                .addComponent(button_Save, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(38, 38, 38)
+                .addComponent(button_Cancel, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE).addGap(18, 18, 18)
+                .addComponent(separator_Button, GroupLayout.PREFERRED_SIZE, 3, GroupLayout.PREFERRED_SIZE).addGap(38, 38, 38)
+                .addComponent(button_Add, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addGap(67, 67, 67)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(textField_Employes, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_Employes)))
+            .addGroup(layout.createSequentialGroup().addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_MPB)
+                .addComponent(textField_MPB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+            .addGroup(GroupLayout.Alignment.TRAILING, layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_Found)
+                .addComponent(textField_Found, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_Name)
+                .addComponent(textField_Name, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))).addContainerGap(77, Short.MAX_VALUE)));
+    }                        
 
     public void setEnable(boolean b) {
         textField_MPB.setEnabled(b);
@@ -305,7 +254,7 @@ public class QLPB_Admin extends javax.swing.JPanel {
                                                 "/"+(PB.getNgayTL().getYear()+1900)});
                             }
         } catch (Exception e) {
-            System.err.println("Danh sách phòng ban null - dòng 772");
+            System.err.println("Danh sách phòng ban null - QLPB_Admin");
         }
     }
     
@@ -355,12 +304,12 @@ public class QLPB_Admin extends javax.swing.JPanel {
     }
 
     public boolean themPB(PhongBan PB) {
-        this.setEnable(false);
         for (PhongBan pb : this.dsPhongBan.getDsPB()) {
             if(PB.getMaPB().equals(pb.getMaPB()))  return false;
         }
         dsPhongBan.ThemPB(PB);
-        this.xoaForm();
+        this.xoaForm();  
+        this.setEnable(false);
         DisplayPB(this.dsPhongBan.getDsPB());
         this.WriteFilePB();
         JOptionPane.showMessageDialog(this, 
@@ -410,7 +359,6 @@ public class QLPB_Admin extends javax.swing.JPanel {
                         modelTable.removeRow(i);
                     }
                     catch(Exception e) {
-                        e.printStackTrace();
                     }
                     break;
                 }
@@ -442,7 +390,7 @@ public class QLPB_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Không tìm thấy file Phòng Ban - dòng 685");
+            System.err.println("Không tìm thấy file Phòng Ban - QLPB_Admin");
         }
         this.dsPhongBan.setDsPB(phongBan);
     }
@@ -456,7 +404,7 @@ public class QLPB_Admin extends javax.swing.JPanel {
             }
             oos.close();
         } catch (IOException e) {
-             System.err.println("Không tìm thấy file Phong Ban - dòng 699");
+             System.err.println("Không tìm thấy file Phong Ban - QLPB_Admin");
         }
     }
     
@@ -478,7 +426,7 @@ public class QLPB_Admin extends javax.swing.JPanel {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Lỗi đọc file - dòng 1071");
+            System.err.println("Lỗi đọc file Nhân Viên - QLPB_Admin");
         }
         this.dsNhanVien.setDsNV(nhanVien);       
     }

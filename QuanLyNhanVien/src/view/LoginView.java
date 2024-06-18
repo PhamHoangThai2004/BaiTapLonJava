@@ -1,22 +1,33 @@
 package view;
 
+
 import controller.LoginListen;
+import java.awt.Color;
+import java.awt.Font;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.*;
 import model.DSTaiKhoan;
 import model.TaiKhoan;
 
-public class LoginView extends javax.swing.JFrame {
+public class LoginView extends JFrame {
     public DSTaiKhoan dsTaiKhoan;
+    private JButton button_Login;
+    public JLabel label_Error;
+    private JLabel label_Password, label_Title, label_UserName;
+    public JPasswordField passwordField_Password;
+    public JTextField textField_UserName;
     
     public LoginView() {
         this.dsTaiKhoan = new  DSTaiKhoan();
-        initComponents();
+        this.setView();
         this.setProperty();
         this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     private void setProperty() {
@@ -28,101 +39,66 @@ public class LoginView extends javax.swing.JFrame {
         this.setIconImage(img.getImage());
         this.setTitle("Employee Manager");
     }
-    
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+                        
+    private void setView() {
 
-        label_UserName = new javax.swing.JLabel();
-        label_Password = new javax.swing.JLabel();
-        textField_UserName = new javax.swing.JTextField();
-        passwordField_Password = new javax.swing.JPasswordField();
-        label_Title = new javax.swing.JLabel();
-        button_Login = new javax.swing.JButton();
-        label_Error = new javax.swing.JLabel();
+        label_UserName = new JLabel();
+        label_Password = new JLabel();
+        textField_UserName = new JTextField();
+        passwordField_Password = new JPasswordField();
+        label_Title = new JLabel();
+        button_Login = new JButton();
+        label_Error = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        label_UserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Font font = new Font("Segoe UI", 0, 18);
+        
+        label_UserName.setFont(font); 
         label_UserName.setText("Tài Khoản:");
 
-        label_Password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Password.setFont(font); 
         label_Password.setText("Mật Khẩu:");
 
-        textField_UserName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textField_UserName.setFont(font); 
 
-        passwordField_Password.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passwordField_Password.setFont(font);
 
-        label_Title.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        label_Title.setFont(font); 
         label_Title.setText("Quản Lý Nhân Viên");
 
-        button_Login.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        button_Login.setFont(font); 
         button_Login.setText("Đăng Nhập");
 
-        label_Error.setForeground(new java.awt.Color(255, 0, 0));
+        Color color = new Color(255, 0, 0);
+        label_Error.setForeground(color);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(label_Title))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_UserName)
-                                .addGap(18, 18, 18)
-                                .addComponent(textField_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_Password)
-                                .addGap(18, 18, 18)
-                                .addComponent(passwordField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(label_Error, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(button_Login)))))
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label_Title)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textField_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label_UserName))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_Password)
-                    .addComponent(passwordField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_Error)
-                    .addComponent(button_Login))
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-
+        GroupLayout layout = new GroupLayout(getContentPane());
+        this.getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(118, 118, 118)
+                .addComponent(label_Title)).addGroup(layout.createSequentialGroup().addGap(37, 37, 37).addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup()
+                .addComponent(label_UserName).addGap(18, 18, 18)
+                .addComponent(textField_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)).addGroup(layout.createSequentialGroup()
+                .addComponent(label_Password).addGap(18, 18, 18)
+                .addComponent(passwordField_Password, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)).addGroup(layout.createSequentialGroup()
+                .addComponent(label_Error, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE).addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(button_Login))))).addContainerGap(62, Short.MAX_VALUE)));
+        
+        layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup().addContainerGap()
+                .addComponent(label_Title).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(textField_UserName,GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_UserName)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                .addComponent(label_Password)
+                .addComponent(passwordField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)).addGap(18, 18, 18)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(label_Error)
+                .addComponent(button_Login)).addContainerGap(121, Short.MAX_VALUE)));
         pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+    }                       
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_Login;
-    public javax.swing.JLabel label_Error;
-    private javax.swing.JLabel label_Password;
-    private javax.swing.JLabel label_Title;
-    private javax.swing.JLabel label_UserName;
-    public javax.swing.JPasswordField passwordField_Password;
-    public javax.swing.JTextField textField_UserName;
-    // End of variables declaration//GEN-END:variables
-
- private void ReadFileTK() {
+    private void ReadFileTK() {
         ArrayList<TaiKhoan> taiKhoan = new ArrayList<>();
 
         try {          
@@ -141,7 +117,7 @@ public class LoginView extends javax.swing.JFrame {
             }
             ois.close();
         } catch (IOException e) {
-            System.err.println("Không tìm thấy file Phòng Ban - dòng 685");
+            System.err.println("Không tìm thấy file Tài Khoản - LoginView");
         }
         this.dsTaiKhoan.setDsTK(taiKhoan);
     }

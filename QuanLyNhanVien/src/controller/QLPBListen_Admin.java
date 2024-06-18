@@ -23,7 +23,7 @@ public class QLPBListen_Admin implements ActionListener{
         switch (s) {
             case "Thêm" -> {
                 this.view.setEnable(true);
-                this.status = s;
+                this.status = s; // this.status = "Thêm"
             }
             case "Lưu" -> {
                 try {
@@ -55,7 +55,7 @@ public class QLPBListen_Admin implements ActionListener{
             case "Xóa" -> this.view.xoaPB();
             case "Chi Tiết" -> {
                 this.view.hienThiChiTiet();
-                this.status = s;
+                this.status = s; // this.status = "CHi Tiết"
             }
             case "Tìm Kiếm" -> this.view.timKiemPB();
             case "Hủy" -> this.view.huyTimKiem();
